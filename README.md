@@ -17,3 +17,4 @@ Statische Website (HTML5/CSS3/Vanilla-JS) für das IT-Systemhaus systemhaus24. K
 - `.htaccess` enthält Security-Header (CSP, HSTS, X-Frame-Options etc.) und HTTPS-Redirect für Apache-Hosting. Falls der Hosting-Anbieter Nginx oder eine Plattform wie Netlify/Vercel nutzt, müssen die Header dort äquivalent konfiguriert werden.
 - Spam-Schutz im Kontaktformular über Honeypot-Feld + einfache Rechenaufgabe – bewusst **kein** Google reCAPTCHA.
 - `robots.txt` / `sitemap.xml` für SEO vorhanden (Domain-Platzhalter `systemhaus24.net` ggf. anpassen).
+- Icons: Duotone-SVGs basierend auf [Phosphor Icons](https://phosphoricons.com/) (MIT-Lizenz), inline eingebettet – keine externe Icon-Font-CDN-Abhängigkeit.

@@ -348,15 +348,16 @@ section { padding: 70px 0; }
 .icon-line {
   width: 48px;
   height: 48px;
-  border-radius: 12px;
+  border-radius: 14px;
   background: var(--gradient-pink-soft);
   display: flex;
   align-items: center;
   justify-content: center;
   margin-bottom: 18px;
   flex-shrink: 0;
+  color: var(--color-pink-dark);
 }
-.icon-line svg { width: 24px; height: 24px; stroke: var(--color-pink-dark); fill: none; stroke-width: 1.7; stroke-linecap: round; stroke-linejoin: round; }
+.icon-line svg { width: 26px; height: 26px; fill: currentColor; }
 .icon-line.sm { width: 40px; height: 40px; border-radius: 10px; margin-bottom: 0; }
 .icon-line.lg {
   width: 56px; height: 56px; border-radius: 50%;
@@ -646,8 +647,7 @@ section { padding: 70px 0; }
   z-index: 1;
 }
 .b-feature > * { position: relative; z-index: 2; }
-.b-feature .b-icon { background: rgba(255,255,255,0.16); }
-.b-feature .b-icon svg { stroke: #fff; }
+.b-feature .b-icon { background: rgba(255,255,255,0.16); color: #fff; }
 
 .b-cloud { grid-column: 3; grid-row: 1; }
 .b-security { grid-column: 3; grid-row: 2; }
@@ -663,13 +663,12 @@ section { padding: 70px 0; }
   display: flex; align-items: center; justify-content: center;
   margin-bottom: 14px;
   flex-shrink: 0;
+  color: var(--color-pink-dark);
 }
-.b-block .b-icon svg { width: 22px; height: 22px; stroke: var(--color-pink-dark); fill: none; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
-.b-block.b-dark .b-icon { background: rgba(255,255,255,0.14); }
-.b-block.b-dark .b-icon svg { stroke: #fff; }
+.b-block .b-icon svg { width: 24px; height: 24px; fill: currentColor; }
+.b-block.b-dark .b-icon { background: rgba(255,255,255,0.14); color: #fff; }
 .b-block.b-tint .b-icon { background: rgba(255,255,255,0.65); }
-.b-block.b-cta .b-icon { background: rgba(255,255,255,0.22); }
-.b-block.b-cta .b-icon svg { stroke: #fff; }
+.b-block.b-cta .b-icon { background: rgba(255,255,255,0.22); color: #fff; }
 
 .b-block h3 { margin: 0 0 4px; font-size: 1.02rem; color: var(--color-petrol); }
 .b-block.b-dark h3, .b-block.b-cta h3, .b-block.b-feature h3 { color: #fff; }
@@ -840,7 +839,7 @@ section { padding: 70px 0; }
   color: var(--color-text-muted);
 }
 .trust-strip span { display: flex; align-items: center; gap: 8px; }
-.trust-strip svg { width: 16px; height: 16px; stroke: var(--color-pink-dark); fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+.trust-strip svg { width: 16px; height: 16px; fill: var(--color-pink-dark); }
 
 /* Footer */
 .site-footer {
