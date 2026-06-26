@@ -11,8 +11,11 @@
   --color-pink-dark: #c8125a;
   --color-pink-light: #fde6f0;
   --color-violet: #7b2ff7;
+  --color-plum: #2a1130;
+  --color-plum-light: #3d1a45;
   --gradient-pink: linear-gradient(135deg, #ff5fa2 0%, #ec1d6f 45%, #b620e0 100%);
   --gradient-pink-soft: linear-gradient(135deg, rgba(255, 95, 162, 0.14) 0%, rgba(182, 32, 224, 0.10) 100%);
+  --gradient-plum: linear-gradient(155deg, #3d1a45 0%, #2a1130 100%);
   --radius: 16px;
   --shadow: 0 8px 30px rgba(15, 46, 53, 0.08);
   --shadow-pink: 0 12px 32px rgba(236, 29, 111, 0.25);
@@ -625,8 +628,8 @@ section { padding: 70px 0; }
 .b-block:hover { transform: translateY(-4px); box-shadow: var(--shadow); text-decoration: none; }
 
 .b-block.b-light { background: #fff; border: 1px solid var(--color-border); }
-.b-block.b-tint { background: var(--gradient-pink-soft); border: 1px solid rgba(236,29,111,0.12); }
-.b-block.b-dark { background: var(--color-petrol); color: #fff; }
+.b-block.b-tint { background: linear-gradient(135deg, #ffe1ee 0%, #fdd2e8 100%); border: 1px solid rgba(236,29,111,0.16); }
+.b-block.b-dark { background: var(--gradient-plum); color: #fff; }
 .b-block.b-cta {
   background: var(--gradient-pink);
   color: #fff;
@@ -639,7 +642,7 @@ section { padding: 70px 0; }
 .b-feature::before {
   content: "";
   position: absolute; inset: 0;
-  background: linear-gradient(180deg, rgba(15,46,53,0.05) 30%, rgba(15,46,53,0.92) 100%);
+  background: linear-gradient(180deg, rgba(42,17,48,0.05) 30%, rgba(42,17,48,0.92) 100%);
   z-index: 1;
 }
 .b-feature > * { position: relative; z-index: 2; }
@@ -664,6 +667,7 @@ section { padding: 70px 0; }
 .b-block .b-icon svg { width: 22px; height: 22px; stroke: var(--color-pink-dark); fill: none; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
 .b-block.b-dark .b-icon { background: rgba(255,255,255,0.14); }
 .b-block.b-dark .b-icon svg { stroke: #fff; }
+.b-block.b-tint .b-icon { background: rgba(255,255,255,0.65); }
 .b-block.b-cta .b-icon { background: rgba(255,255,255,0.22); }
 .b-block.b-cta .b-icon svg { stroke: #fff; }
 
