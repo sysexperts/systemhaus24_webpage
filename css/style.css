@@ -426,6 +426,8 @@ section { padding: 70px 0; }
   border-bottom: 1px solid var(--color-border);
 }
 .service-block:last-child { border-bottom: none; }
+.service-block .service-intro { display: flex; align-items: flex-start; gap: 20px; }
+.service-block .service-intro .icon-line { margin-bottom: 0; }
 .service-block .service-number {
   font-size: 0.8rem;
   font-weight: 700;
@@ -433,7 +435,7 @@ section { padding: 70px 0; }
   letter-spacing: 0.05em;
 }
 .service-block h3 { color: var(--color-petrol); font-size: 1.5rem; margin: 8px 0 14px; }
-.service-block .service-intro p { color: var(--color-text-muted); margin: 0; }
+.service-block .service-text p { color: var(--color-text-muted); margin: 0; }
 
 @media (max-width: 860px) {
   .service-block { grid-template-columns: 1fr; gap: 20px; }
@@ -638,6 +640,14 @@ section { padding: 70px 0; }
   justify-content: center;
 }
 
+.b-block:not(.b-feature):not(.b-cta) {
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 16px;
+}
+.b-block:not(.b-feature):not(.b-cta) .b-icon { margin-bottom: 0; }
+
 .b-feature { grid-column: 1 / 3; grid-row: 1 / 3; justify-content: flex-end; }
 .b-feature img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: 0; }
 .b-feature::before {
@@ -742,18 +752,19 @@ section { padding: 70px 0; }
 /* Why us */
 .why-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 32px;
-  text-align: center;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 32px 28px;
 }
+.why-grid > div { display: flex; align-items: flex-start; gap: 16px; text-align: left; }
 .why-grid .icon {
-  width: 56px; height: 56px; margin: 0 auto 14px;
+  width: 52px; height: 52px;
   border-radius: 50%;
   background: var(--gradient-pink);
   color: #fff;
   display: flex; align-items: center; justify-content: center;
   font-size: 1.4rem;
   box-shadow: var(--shadow-pink);
+  flex-shrink: 0;
 }
 .why-grid h3 { color: var(--color-petrol); font-size: 1.05rem; margin: 0 0 6px; }
 .why-grid p { color: var(--color-text-muted); font-size: 0.92rem; margin: 0; }
