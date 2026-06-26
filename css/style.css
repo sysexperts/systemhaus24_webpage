@@ -756,28 +756,65 @@ section { padding: 70px 0; }
   gap: 20px;
 }
 .why-grid > div {
+  position: relative;
   display: flex;
   align-items: flex-start;
-  gap: 18px;
+  gap: 20px;
   text-align: left;
   background: #fff;
   border: 1px solid var(--color-border);
-  border-radius: var(--radius);
-  padding: 26px;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  border-radius: 20px;
+  padding: 28px;
+  overflow: hidden;
+  transition: transform 0.22s ease, box-shadow 0.22s ease, border-color 0.22s ease;
 }
-.why-grid > div:hover { transform: translateY(-3px); box-shadow: var(--shadow); }
+.why-grid > div::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+  background: var(--gradient-pink);
+  opacity: 0;
+  transition: opacity 0.22s ease;
+}
+.why-grid > div::after {
+  content: "";
+  position: absolute;
+  top: -40px; right: -40px;
+  width: 110px; height: 110px;
+  border-radius: 50%;
+  background: var(--gradient-pink-soft);
+  opacity: 0;
+  transition: opacity 0.22s ease;
+}
+.why-grid > div:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow);
+  border-color: transparent;
+}
+.why-grid > div:hover::before,
+.why-grid > div:hover::after { opacity: 1; }
 .why-grid .icon {
-  width: 48px; height: 48px;
-  border-radius: 12px;
+  position: relative;
+  z-index: 1;
+  width: 54px; height: 54px;
+  border-radius: 50%;
   background: var(--gradient-pink-soft);
   color: var(--color-pink-dark);
   display: flex; align-items: center; justify-content: center;
   flex-shrink: 0;
+  transition: transform 0.22s ease;
 }
-.why-grid .icon svg { width: 22px; height: 22px; }
-.why-grid h3 { color: var(--color-petrol); font-size: 1.02rem; margin: 0 0 6px; }
-.why-grid p { color: var(--color-text-muted); font-size: 0.9rem; margin: 0; }
+.why-grid > div:hover .icon { transform: scale(1.08); }
+.why-grid .icon svg { width: 24px; height: 24px; }
+.why-grid h3 {
+  position: relative; z-index: 1;
+  color: var(--color-petrol); font-size: 1.05rem; margin: 0 0 6px;
+}
+.why-grid p {
+  position: relative; z-index: 1;
+  color: var(--color-text-muted); font-size: 0.9rem; margin: 0;
+}
 
 @media (max-width: 700px) {
   .why-grid { grid-template-columns: 1fr; }
