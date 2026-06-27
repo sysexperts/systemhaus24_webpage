@@ -41,4 +41,23 @@ document.addEventListener('DOMContentLoaded', function () {
     ca.textContent = String(Math.floor(Math.random() * 8) + 1);
     cb.textContent = String(Math.floor(Math.random() * 8) + 1);
   }
+
+  // Subtle 3D tilt on the hero dashboard mockup, following the cursor
+  var heroMedia = document.querySelector('.hero-media');
+  var heroGraphic = document.querySelector('.hero-graphic');
+  if (heroMedia && heroGraphic && window.matchMedia('(hover: hover)').matches) {
+    var baseScale = window.innerWidth <= 900 ? 1.05 : 1.22;
+    heroMedia.addEventListener('mousemove', function (e) {
+      var rect = heroMedia.getBoundingClientRect();
+      var x = (e.clientX - rect.left) / rect.width - 0.5;
+      var y = (e.clientY - rect.top) / rect.height - 0.5;
+      var rotateY = x * 12;
+      var rotateX = y * -12;
+      heroGraphic.style.transform =
+        'scale(' + baseScale + ') rotateX(' + rotateX + 'deg) rotateY(' + rotateY + 'deg)';
+    });
+    heroMedia.addEventListener('mouseleave', function () {
+      heroGraphic.style.transform = 'scale(' + baseScale + ')';
+    });
+  }
 });

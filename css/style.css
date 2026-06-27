@@ -212,7 +212,18 @@ a:hover { text-decoration: underline; }
 .trust-text span { color: var(--color-text-muted); font-size: 0.84rem; }
 
 /* Hero dashboard mockup */
-.hero-media { position: relative; }
+.hero-copy { position: relative; z-index: 2; }
+.hero-media {
+  position: relative;
+  z-index: 1;
+  perspective: 1000px;
+}
+.hero-graphic {
+  transform: scale(1.22);
+  transform-origin: center right;
+  transition: transform 0.25s ease-out;
+  will-change: transform;
+}
 
 .mock-panel {
   background: #fff;
@@ -284,6 +295,7 @@ a:hover { text-decoration: underline; }
   .hero-trust { justify-content: center; }
   .mock-badge-top { left: 50%; transform: translateX(-50%); top: -18px; }
   .mock-badge-bottom { right: 50%; transform: translateX(50%); bottom: -18px; }
+  .hero-graphic { transform: scale(1.05); transform-origin: center; }
 }
 
 @media (max-width: 480px) {
