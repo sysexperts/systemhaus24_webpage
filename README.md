@@ -12,6 +12,9 @@ Statische Website (HTML5/CSS3/Vanilla-JS) für das IT-Systemhaus systemhaus24. K
 - **Trust-Leiste im Hero** ([index.html](index.html)): Avatar-Initialen, Sterne-Bewertung und Vertrauenstext sind Platzhalter – durch echte Kundenangaben ersetzen oder entfernen, bevor die Seite live geht (sonst Risiko irreführender Werbung).
 - **Hero-Dashboard-Mockup** ([index.html](index.html)): Zahlen (Verfügbarkeit 99,9 %, Tickets gelöst 1.284) sind illustrative Platzhalter – durch echte oder klar als Beispiel gekennzeichnete Werte ersetzen.
 - **Logo/Bildmaterial**: aktuell nur Text-Logo + SVG-Favicon, ggf. eigenes Branding ergänzen.
+- **Design-Migration läuft**: [index.html](index.html) und [loesungen/starface-telefonie.html](loesungen/starface-telefonie.html) nutzen das neue Design-System `css/site-v2.css` (Clean/Hell, Glassmorphism). Die übrigen Seiten ([leistungen.html](leistungen.html), [ueber-uns.html](ueber-uns.html), [referenzen.html](referenzen.html), [kontakt.html](kontakt.html)) laufen noch auf dem alten `css/style.css` (Pink-Gradient-Design) und sollten in einem nächsten Schritt auf das neue System migriert werden, damit die Seite konsistent wirkt.
+- **Starface-Produktseite** ([loesungen/starface-telefonie.html](loesungen/starface-telefonie.html)): Screenshot-Platzhalter, Logo-Zielgruppen-Chips und Kontaktdaten sind Platzhalter. Inhaltlich auf Basis öffentlich verfügbarer Starface-Produktinformationen verfasst – vor Veröffentlichung mit dem tatsächlichen Leistungsumfang/Vertrag abgleichen.
+- **Lösungen-Dropdown**: aktuell nur ein Eintrag (Starface Telefonie). Struktur ist für weitere Produktseiten unter `loesungen/` vorbereitet.
 
 ## Technik
 

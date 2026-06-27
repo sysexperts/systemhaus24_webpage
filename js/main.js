@@ -60,4 +60,20 @@ document.addEventListener('DOMContentLoaded', function () {
       heroGraphic.style.transform = 'scale(' + baseScale + ')';
     });
   }
+
+  // Design v2: mobile nav toggle + tap-to-open dropdown
+  var shToggle = document.querySelector('.sh-nav-toggle');
+  var shLinks = document.querySelector('.sh-nav .links');
+  if (shToggle && shLinks) {
+    shToggle.addEventListener('click', function () {
+      shLinks.classList.toggle('open');
+    });
+  }
+  document.querySelectorAll('.sh-nav-dropdown > span').forEach(function (label) {
+    label.addEventListener('click', function (e) {
+      if (window.innerWidth > 760) return;
+      e.preventDefault();
+      label.parentElement.classList.toggle('open');
+    });
+  });
 });
