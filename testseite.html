@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Testseite – Design-Experiment (Micro-SaaS-Stil)</title>
+<meta name="robots" content="noindex, nofollow">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="css/style.css">
+<style>
+  /* Test-spezifische Ergänzungen, nicht Teil des Hauptdesigns */
+  .compare-table { width: 100%; border-collapse: collapse; background: #fff; border-radius: var(--radius); overflow: hidden; box-shadow: var(--shadow); }
+  .compare-table th, .compare-table td { padding: 16px 20px; text-align: left; border-bottom: 1px solid var(--color-border); font-size: 0.94rem; }
+  .compare-table th { background: var(--color-bg-alt); color: var(--color-petrol); font-weight: 700; }
+  .compare-table td:first-child, .compare-table th:first-child { color: var(--color-text-muted); font-weight: 500; }
+  .compare-table .yes { color: #1e9e6a; font-weight: 700; }
+  .compare-table .no { color: var(--color-text-muted); }
+  .compare-table tr:last-child td { border-bottom: none; }
+  .highlight-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+  .highlight-row .item { display: flex; gap: 12px; align-items: flex-start; }
+  .highlight-row .check { width: 22px; height: 22px; border-radius: 50%; background: var(--gradient-pink); color: #fff; display: flex; align-items: center; justify-content: center; font-size: 0.7rem; flex-shrink: 0; margin-top: 2px; }
+  .highlight-row p { margin: 0; color: var(--color-text); font-size: 0.94rem; }
+  .test-banner { background: var(--color-petrol); color: #fff; text-align: center; padding: 10px; font-size: 0.85rem; }
+  .test-banner a { color: #ffb6da; }
+  @media (max-width: 760px) { .highlight-row { grid-template-columns: 1fr; } .compare-table { font-size: 0.85rem; } }
+</style>
+</head>
+<body>
+
+<div class="test-banner">🧪 Design-Testseite – nicht Teil der echten Seite, nicht in der Navigation verlinkt. <a href="index.html">Zur Startseite</a></div>
+
+<header class="site-header">
+  <nav class="nav">
+    <a href="index.html" class="logo">systemhaus<span>24</span></a>
+    <ul class="nav-links">
+      <li><a href="#features">Lösungen</a></li>
+      <li><a href="#faq-link">Ressourcen</a></li>
+      <li><a href="#usecases">Use Cases</a></li>
+      <li><a href="leistungen.html">Preise</a></li>
+      <li><a href="#security">Sicherheit</a></li>
+    </ul>
+    <a href="kontakt.html" class="nav-cta">Loslegen</a>
+    <button class="nav-toggle" aria-label="Menü öffnen">☰</button>
+  </nav>
+</header>
+
+<main>
+  <!-- Hero -->
+  <section class="hero">
+    <div class="container">
+      <div class="hero-copy">
+        <span class="eyebrow-pill">✦ IT-Betreuung für Freelancer & kleine Teams</span>
+        <h1>Die komplette IT-Plattform für <span class="accent">moderne</span> kleine Unternehmen</h1>
+        <p class="lead">systemhaus24 vereint Beratung, Cloud, Sicherheit und Support in einem Service – mit klarem Dashboard-Überblick statt Excel-Tabellen und Telefon-Hotline-Chaos.</p>
+        <div class="hero-actions">
+          <a href="kontakt.html" class="btn btn-primary">Loslegen <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+          <a href="#preview" class="btn btn-secondary">Live-Vorschau</a>
+        </div>
+        <div class="hero-trust">
+          <div class="trust-avatars">
+            <span style="background:#7b2ff7">TM</span>
+            <span style="background:#1e9e6a">SK</span>
+            <span style="background:#ec1d6f">LB</span>
+            <span style="background:#e08a00">MW</span>
+          </div>
+          <div class="trust-text">
+            <div class="trust-stars" aria-hidden="true">★★★★★</div>
+            <span>Vertraut von KMU im Mittelstand</span>
+          </div>
+        </div>
+      </div>
+      <div class="hero-media">
+        <div class="hero-graphic">
+          <div class="mock-badge mock-badge-top">
+            <span class="mock-badge-icon mock-badge-icon-ok"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="#fff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l4 4L19 6"/></svg></span>
+            Systeme geschützt
+          </div>
+          <div class="mock-panel">
+            <div class="mock-stats">
+              <div class="mock-stat">
+                <span class="mock-label">Verfügbarkeit</span>
+                <strong>99,9%</strong>
+                <span class="mock-trend">▲ stabil</span>
+              </div>
+              <div class="mock-stat">
+                <span class="mock-label">Tickets gelöst</span>
+                <strong>1.284</strong>
+                <span class="mock-trend">▲ 12% MoM</span>
+              </div>
+            </div>
+            <div class="mock-chart">
+              <span style="height:46%"></span>
+              <span style="height:64%"></span>
+              <span style="height:38%"></span>
+              <span style="height:72%"></span>
+              <span style="height:52%"></span>
+              <span style="height:88%"></span>
+              <span style="height:70%"></span>
+            </div>
+          </div>
+          <div class="mock-badge mock-badge-bottom">
+            <span class="mock-badge-icon mock-badge-icon-pink"><svg viewBox="0 0 256 256" width="14" height="14" fill="#fff"><path d="M215.79,118.17a8,8,0,0,0-5-5.66L153.18,90.9l14.66-73.33a8,8,0,0,0-13.69-7l-112,120a8,8,0,0,0,3,13l57.63,21.61L88.16,238.43a8,8,0,0,0,13.69,7l112-120A8,8,0,0,0,215.79,118.17Z"/></svg></span>
+            24/7 Monitoring aktiv
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Key highlights -->
+  <section class="section-alt">
+    <div class="container">
+      <div class="section-head">
+        <div class="eyebrow">Key Highlights</div>
+        <h2>Warum Teams zu systemhaus24 wechseln</h2>
+      </div>
+      <div class="highlight-row">
+        <div class="item"><span class="check">✓</span><p>Ein Ansprechpartner statt fünf verschiedener Dienstleister</p></div>
+        <div class="item"><span class="check">✓</span><p>Transparente Pakete statt Stundenzettel-Überraschung</p></div>
+        <div class="item"><span class="check">✓</span><p>Reaktionszeit unter 2 Stunden, garantiert im Vertrag</p></div>
+        <div class="item"><span class="check">✓</span><p>Hosting & Backup ausschließlich in Deutschland/EU</p></div>
+        <div class="item"><span class="check">✓</span><p>Kein Callcenter – feste, erreichbare Ansprechpartner</p></div>
+        <div class="item"><span class="check">✓</span><p>DSGVO-konforme Prozesse von Anfang an mitgedacht</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Features grid -->
+  <section id="features">
+    <div class="container">
+      <div class="section-head">
+        <div class="eyebrow">Features & Leistungen</div>
+        <h2>Alles, was Ihre IT braucht</h2>
+        <p>Acht Leistungsbereiche, ein Vertrag, ein Ansprechpartner.</p>
+      </div>
+      <div class="grid">
+        <div class="card">
+          <div class="icon-line"><svg viewBox="0 0 256 256" fill="currentColor"><path d="M176,128a48,48,0,1,1-48-48A48,48,0,0,1,176,128Z" opacity="0.35"/><path d="M221.87,83.16A104.1,104.1,0,1,1,195.67,49l22.67-22.68a8,8,0,0,1,11.32,11.32l-96,96a8,8,0,0,1-11.32-11.32l27.72-27.72a40,40,0,1,0,17.87,31.09,8,8,0,1,1,16-.9,56,56,0,1,1-22.38-41.65L184.3,60.39a87.88,87.88,0,1,0,23.13,29.67,8,8,0,0,1,14.44-6.9Z"/></svg></div>
+          <h3>IT-Beratung & Strategie</h3>
+          <p>Analyse Ihrer bestehenden IT und ein Konzept, das zu Ihrem Budget passt.</p>
+        </div>
+        <div class="card">
+          <div class="icon-line"><svg viewBox="0 0 256 256" fill="currentColor"><path d="M240,128a80,80,0,0,1-80,80H72A56,56,0,1,1,85.92,97.74l0,.1A80,80,0,0,1,240,128Z" opacity="0.35"/><path d="M160,40A88.09,88.09,0,0,0,81.29,88.67,64,64,0,1,0,72,216h88a88,88,0,0,0,0-176Zm0,160H72a48,48,0,0,1,0-96c1.1,0,2.2,0,3.29.11A88,88,0,0,0,72,128a8,8,0,0,0,16,0,72,72,0,1,1,72,72Z"/></svg></div>
+          <h3>Cloud-Lösungen</h3>
+          <p>Cloud-Server, automatisierte Backups und Migration ohne Ausfallzeiten.</p>
+        </div>
+        <div class="card">
+          <div class="icon-line"><svg viewBox="0 0 256 256" fill="currentColor"><path d="M216,56v56c0,96-88,120-88,120S40,208,40,112V56a8,8,0,0,1,8-8H208A8,8,0,0,1,216,56Z" opacity="0.35"/><path d="M208,40H48A16,16,0,0,0,32,56v56c0,52.72,25.52,84.67,46.93,102.19,23.06,18.86,46,25.26,47,25.53a8,8,0,0,0,4.2,0c1-.27,23.91-6.67,47-25.53C198.48,196.67,224,164.72,224,112V56A16,16,0,0,0,208,40Zm0,72c0,37.07-13.66,67.16-40.6,89.42A129.3,129.3,0,0,1,128,223.62a128.25,128.25,0,0,1-38.92-21.81C61.82,179.51,48,149.3,48,112l0-56,160,0ZM82.34,141.66a8,8,0,0,1,11.32-11.32L112,148.69l50.34-50.35a8,8,0,0,1,11.32,11.32l-56,56a8,8,0,0,1-11.32,0Z"/></svg></div>
+          <h3>IT-Sicherheit</h3>
+          <p>Firewall, Virenschutz und Disaster Recovery aus einer Hand.</p>
+        </div>
+        <div class="card">
+          <div class="icon-line"><svg viewBox="0 0 256 256" fill="currentColor"><path d="M230.1,108.76,198.25,90.62c-.64-1.16-1.31-2.29-2-3.41l-.12-36A104.61,104.61,0,0,0,162,32L130,49.89c-1.34,0-2.69,0-4,0L94,32A104.58,104.58,0,0,0,59.89,51.25l-.16,36c-.7,1.12-1.37,2.26-2,3.41l-31.84,18.1a99.15,99.15,0,0,0,0,38.46l31.85,18.14c.64,1.16,1.31,2.29,2,3.41l.12,36A104.61,104.61,0,0,0,94,224l32-17.87c1.34,0,2.69,0,4,0L162,224a104.58,104.58,0,0,0,34.08-19.25l.16-36c.7-1.12,1.37-2.26,2-3.41l31.84-18.1A99.15,99.15,0,0,0,230.1,108.76ZM128,168a40,40,0,1,1,40-40A40,40,0,0,1,128,168Z" opacity="0.35"/><path d="M128,80a48,48,0,1,0,48,48A48.05,48.05,0,0,0,128,80Zm0,80a32,32,0,1,1,32-32A32,32,0,0,1,128,160Zm109.94-52.79a8,8,0,0,0-3.89-5.4l-29.83-17-.12-33.62a8,8,0,0,0-2.83-6.08,111.91,111.91,0,0,0-36.72-20.67,8,8,0,0,0-6.46.59L128,41.85,97.88,25a8,8,0,0,0-6.47-.6A111.92,111.92,0,0,0,54.73,45.15a8,8,0,0,0-2.83,6.07l-.15,33.65-29.83,17a8,8,0,0,0-3.89,5.4,106.47,106.47,0,0,0,0,41.56,8,8,0,0,0,3.89,5.4l29.83,17,.12,33.63a8,8,0,0,0,2.83,6.08,111.91,111.91,0,0,0,36.72,20.67,8,8,0,0,0,6.46-.59L128,214.15,158.12,231a7.91,7.91,0,0,0,3.9,1,8.09,8.09,0,0,0,2.57-.42,112.1,112.1,0,0,0,36.68-20.73,8,8,0,0,0,2.83-6.07l.15-33.65,29.83-17a8,8,0,0,0,3.89-5.4A106.47,106.47,0,0,0,237.94,107.21Z"/></svg></div>
+          <h3>Managed Services</h3>
+          <p>Laufendes Monitoring & Helpdesk, bevor Störungen auffallen.</p>
+        </div>
+        <div class="card">
+          <div class="icon-line"><svg viewBox="0 0 256 256" fill="currentColor"><path d="M80,144v40a16,16,0,0,1-16,16H48a16,16,0,0,1-16-16V128H64A16,16,0,0,1,80,144Zm112-16a16,16,0,0,0-16,16v40a16,16,0,0,0,16,16h32V128Z" opacity="0.35"/><path d="M201.89,54.66A104.08,104.08,0,0,0,24,128v56a24,24,0,0,0,24,24H64a24,24,0,0,0,24-24V144a24,24,0,0,0-24-24H40.36A88.12,88.12,0,0,1,190.54,65.93,87.39,87.39,0,0,1,215.65,120H192a24,24,0,0,0-24,24v40a24,24,0,0,0,24,24h24a24,24,0,0,1-24,24H136a8,8,0,0,0,0,16h56a40,40,0,0,0,40-40V128A103.41,103.41,0,0,0,201.89,54.66ZM64,136a8,8,0,0,1,8,8v40a8,8,0,0,1-8,8H48a8,8,0,0,1-8-8V136Zm128,56a8,8,0,0,1-8-8V144a8,8,0,0,1,8-8h24v56Z"/></svg></div>
+          <h3>Support & Helpdesk</h3>
+          <p>Feste Ansprechpartner, Remote- und Vor-Ort-Support.</p>
+        </div>
+        <div class="card">
+          <div class="icon-line"><svg viewBox="0 0 256 256" fill="currentColor"><path d="M152,40V72a8,8,0,0,1-8,8H112a8,8,0,0,1-8-8V40a8,8,0,0,1,8-8h32A8,8,0,0,1,152,40ZM80,168H48a8,8,0,0,0-8,8v32a8,8,0,0,0,8,8H80a8,8,0,0,0,8-8V176A8,8,0,0,0,80,168Zm128,0H176a8,8,0,0,0-8,8v32a8,8,0,0,0,8,8h32a8,8,0,0,0,8-8V176A8,8,0,0,0,208,168Z" opacity="0.35"/><path d="M232,112H136V88h8a16,16,0,0,0,16-16V40a16,16,0,0,0-16-16H112A16,16,0,0,0,96,40V72a16,16,0,0,0,16,16h8v24H24a8,8,0,0,0,0,16H56v32H48a16,16,0,0,0-16,16v32a16,16,0,0,0,16,16H80a16,16,0,0,0,16-16V176a16,16,0,0,0-16-16H72V128H184v32h-8a16,16,0,0,0-16,16v32a16,16,0,0,0,16,16h32a16,16,0,0,0,16-16V176a16,16,0,0,0-16-16h-8V128h32a8,8,0,0,0,0-16ZM112,40h32V72H112ZM80,208H48V176H80Zm128,0H176V176h32Z"/></svg></div>
+          <h3>Infrastruktur & Netzwerke</h3>
+          <p>Server, WLAN und Verkabelung, stabil und dokumentiert.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Live preview -->
+  <section class="section-alt" id="preview">
+    <div class="container">
+      <div class="split">
+        <div class="split-media">
+          <img src="assets/server-room.jpg" alt="Serverraum" width="600" height="380" loading="lazy">
+        </div>
+        <div class="split-copy">
+          <div class="eyebrow">Live-Vorschau</div>
+          <h2>So sieht Ihre IT-Betreuung aus</h2>
+          <p>Ein zentrales Dashboard statt fünf Tools: Reaktionszeiten, offene Tickets und Systemstatus auf einen Blick – inklusive monatlichem Statusbericht in verständlicher Sprache.</p>
+          <a href="kontakt.html" class="btn btn-secondary">Demo anfragen</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Comparison table -->
+  <section>
+    <div class="container">
+      <div class="section-head">
+        <div class="eyebrow">Vergleich</div>
+        <h2>systemhaus24 vs. klassischer IT-Support</h2>
+      </div>
+      <table class="compare-table">
+        <thead>
+          <tr><th>Kriterium</th><th>systemhaus24</th><th>Klassische Hotline</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Fester Ansprechpartner</td><td class="yes">✓ Ja</td><td class="no">Wechselnd</td></tr>
+          <tr><td>Reaktionszeit garantiert</td><td class="yes">✓ &lt; 2 Std.</td><td class="no">Unklar</td></tr>
+          <tr><td>Transparente Pakete</td><td class="yes">✓ Ja</td><td class="no">Stundenzettel</td></tr>
+          <tr><td>Hosting-Standort</td><td class="yes">✓ DE/EU</td><td class="no">Oft unklar</td></tr>
+          <tr><td>Proaktives Monitoring</td><td class="yes">✓ 24/7</td><td class="no">Reaktiv</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- Who this is for -->
+  <section class="section-alt" id="usecases">
+    <div class="container">
+      <div class="section-head">
+        <div class="eyebrow">Für wen geeignet</div>
+        <h2>Wer von systemhaus24 profitiert</h2>
+      </div>
+      <div class="why-grid">
+        <div>
+          <div class="icon"><svg viewBox="0 0 256 256" width="22" height="22" fill="currentColor"><path d="M200,152l-40,40L96,176,40,136,72.68,70.63,128,56l55.32,14.63L183.6,72H144L98.34,116.29a8,8,0,0,0,1.38,12.42C117.23,139.9,141,139.13,160,120Z" opacity="0.35"/><path d="M254.3,107.91,228.78,56.85a16,16,0,0,0-21.47-7.15L182.44,62.13,130.05,48.27a8.14,8.14,0,0,0-4.1,0L73.56,62.13,48.69,49.7a16,16,0,0,0-21.47,7.15L1.7,107.9a16,16,0,0,0,7.15,21.47l27,13.51,55.49,39.63a8.06,8.06,0,0,0,2.71,1.25l64,16a8,8,0,0,0,7.6-2.1l55.07-55.08,26.42-13.21a16,16,0,0,0,7.15-21.46Z"/></svg></div>
+          <h3>Kleine Unternehmen ohne eigene IT</h3>
+          <p>Sie brauchen einen Partner, der alles übernimmt – ohne eigene IT-Abteilung aufzubauen.</p>
+        </div>
+        <div>
+          <div class="icon"><svg viewBox="0 0 256 256" width="22" height="22" fill="currentColor"><path d="M96,240l16-80L48,136,160,16,144,96l64,24Z" opacity="0.35"/><path d="M215.79,118.17a8,8,0,0,0-5-5.66L153.18,90.9l14.66-73.33a8,8,0,0,0-13.69-7l-112,120a8,8,0,0,0,3,13l57.63,21.61L88.16,238.43a8,8,0,0,0,13.69,7l112-120A8,8,0,0,0,215.79,118.17Z"/></svg></div>
+          <h3>Wachsende Teams</h3>
+          <p>Ihre IT muss mitwachsen, ohne dass jede Erweiterung zum Projekt wird.</p>
+        </div>
+        <div>
+          <div class="icon"><svg viewBox="0 0 256 256" width="22" height="22" fill="currentColor"><path d="M216,56v56c0,96-88,120-88,120S40,208,40,112V56a8,8,0,0,1,8-8H208A8,8,0,0,1,216,56Z" opacity="0.35"/><path d="M208,40H48A16,16,0,0,0,32,56v56c0,52.72,25.52,84.67,46.93,102.19,23.06,18.86,46,25.26,47,25.53a8,8,0,0,0,4.2,0c1-.27,23.91-6.67,47-25.53C198.48,196.67,224,164.72,224,112V56A16,16,0,0,0,208,40Z"/></svg></div>
+          <h3>Unternehmen mit Compliance-Pflicht</h3>
+          <p>DSGVO und IT-Sicherheit sind kein Nice-to-have, sondern Voraussetzung.</p>
+        </div>
+        <div>
+          <div class="icon"><svg viewBox="0 0 256 256" width="22" height="22" fill="currentColor"><path d="M12 3l9 4.5-9 4.5-9-4.5L12 3z" opacity="0.35"/><path d="M251.76,88.94l-120-64a8,8,0,0,0-7.52,0l-120,64a8,8,0,0,0,0,14.12L32,117.87v48.42a15.91,15.91,0,0,0,4.06,10.65C49.16,191.53,78.51,216,128,216a130,130,0,0,0,48-8.76V240a8,8,0,0,0,16,0V199.51a115.63,115.63,0,0,0,27.94-22.57A15.91,15.91,0,0,0,224,166.29V117.87l27.76-14.81a8,8,0,0,0,0-14.12Z"/></svg></div>
+          <h3>Unternehmen mit Altsystemen</h3>
+          <p>Eine Migration in die Cloud soll ohne Ausfallzeiten gelingen.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Getting started steps -->
+  <section id="security">
+    <div class="container">
+      <div class="section-head">
+        <div class="eyebrow">Loslegen</div>
+        <h2>So starten Sie mit systemhaus24</h2>
+      </div>
+      <div class="process-steps">
+        <div class="process-step">
+          <div class="num">1</div>
+          <h4>Erstgespräch</h4>
+          <p>Kostenlos und unverbindlich Bedarf klären.</p>
+        </div>
+        <div class="process-step">
+          <div class="num">2</div>
+          <h4>IT-Check</h4>
+          <p>Analyse Ihrer bestehenden Infrastruktur.</p>
+        </div>
+        <div class="process-step">
+          <div class="num">3</div>
+          <h4>Konzept & Angebot</h4>
+          <p>Transparentes Konzept mit klarer Kostenplanung.</p>
+        </div>
+        <div class="process-step">
+          <div class="num">4</div>
+          <h4>Umsetzung</h4>
+          <p>Wir setzen um, ohne Ihren Betrieb zu stören.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section-alt">
+    <div class="container">
+      <div class="cta-band" style="margin:0;">
+        <h2>Bereit, IT abzugeben statt zu verwalten?</h2>
+        <p>Vereinbaren Sie jetzt Ihre kostenlose Erstberatung.</p>
+        <a href="kontakt.html" class="btn btn-primary">Jetzt loslegen</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-bottom">
+      <span>🧪 Testseite – kein Bestandteil der echten Website.</span>
+      <span><a href="index.html">Zur echten Startseite</a></span>
+    </div>
+  </div>
+</footer>
+
+<script src="js/main.js"></script>
+</body>
+</html>
