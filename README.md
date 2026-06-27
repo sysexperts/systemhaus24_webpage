@@ -9,6 +9,8 @@ Statische Website (HTML5/CSS3/Vanilla-JS) für das IT-Systemhaus systemhaus24. K
 - **Kontaktformular** ([kontakt.html](kontakt.html)): `action="https://formspree.io/f/DEINE_FORM_ID"` durch die eigene Formspree-Form-ID ersetzen (EU-Region wählen). Alternativ anderen DSGVO-konformen EU-Formular-Dienst nutzen.
 - **Kontaktdaten** in [kontakt.html](kontakt.html) und Footer aller Seiten mit echter Adresse/Telefon/E-Mail aktualisieren.
 - **Echte Referenzen/Testimonials** statt Platzhaltertexte in [referenzen.html](referenzen.html) und [index.html](index.html) einsetzen.
+- **Trust-Leiste im Hero** ([index.html](index.html)): Avatar-Initialen, Sterne-Bewertung und Vertrauenstext sind Platzhalter – durch echte Kundenangaben ersetzen oder entfernen, bevor die Seite live geht (sonst Risiko irreführender Werbung).
+- **Hero-Dashboard-Mockup** ([index.html](index.html)): Zahlen (Verfügbarkeit 99,9 %, Tickets gelöst 1.284) sind illustrative Platzhalter – durch echte oder klar als Beispiel gekennzeichnete Werte ersetzen.
 - **Logo/Bildmaterial**: aktuell nur Text-Logo + SVG-Favicon, ggf. eigenes Branding ergänzen.
 
 ## Technik
