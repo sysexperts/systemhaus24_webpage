@@ -3,342 +3,383 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Testseite – Design-Experiment (Micro-SaaS-Stil)</title>
+<title>Testseite – Onepager (Clean/Hell)</title>
 <meta name="robots" content="noindex, nofollow">
 <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
-<link rel="stylesheet" href="css/style.css">
 <style>
-  /* Test-spezifische Ergänzungen, nicht Teil des Hauptdesigns */
-  .compare-table { width: 100%; border-collapse: collapse; background: #fff; border-radius: var(--radius); overflow: hidden; box-shadow: var(--shadow); }
-  .compare-table th, .compare-table td { padding: 16px 20px; text-align: left; border-bottom: 1px solid var(--color-border); font-size: 0.94rem; }
-  .compare-table th { background: var(--color-bg-alt); color: var(--color-petrol); font-weight: 700; }
-  .compare-table td:first-child, .compare-table th:first-child { color: var(--color-text-muted); font-weight: 500; }
-  .compare-table .yes { color: #1e9e6a; font-weight: 700; }
-  .compare-table .no { color: var(--color-text-muted); }
-  .compare-table tr:last-child td { border-bottom: none; }
-  .highlight-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
-  .highlight-row .item { display: flex; gap: 12px; align-items: flex-start; }
-  .highlight-row .check { width: 22px; height: 22px; border-radius: 50%; background: var(--gradient-pink); color: #fff; display: flex; align-items: center; justify-content: center; font-size: 0.7rem; flex-shrink: 0; margin-top: 2px; }
-  .highlight-row p { margin: 0; color: var(--color-text); font-size: 0.94rem; }
-  .test-banner { background: var(--color-petrol); color: #fff; text-align: center; padding: 10px; font-size: 0.85rem; }
-  .test-banner a { color: #ffb6da; }
-  @media (max-width: 760px) { .highlight-row { grid-template-columns: 1fr; } .compare-table { font-size: 0.85rem; } }
+  :root {
+    --kb-blue: #3b82f6;
+    --kb-blue-light: #5cc6f5;
+    --kb-navy: #1a1333;
+    --kb-text: #1d1d1f;
+    --kb-text-muted: #5a6072;
+    --kb-text-soft: #6e6e73;
+    --kb-border: #ece9f3;
+    --kb-grad: linear-gradient(135deg, var(--kb-blue-light), var(--kb-blue));
+    --font: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { font-family: var(--font); color: var(--kb-text); background: linear-gradient(180deg, #f3f2f7, #eae8f3); }
+  img { max-width: 100%; display: block; }
+  .wrap { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
 
-  /* Centered hero (v2, matches reference layout) */
-  .hero-v2 {
+  .test-banner { background: var(--kb-navy); color: #fff; text-align: center; padding: 10px; font-size: 0.85rem; }
+  .test-banner a { color: #9dc4ff; }
+
+  /* Nav */
+  .kb-nav {
+    position: sticky; top: 0; z-index: 50;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 16px 8vw;
+    background: rgba(255,255,255,.6);
+    backdrop-filter: blur(20px) saturate(180%);
+    -webkit-backdrop-filter: blur(20px) saturate(180%);
+    border-bottom: 1px solid rgba(255,255,255,.6);
+  }
+  .kb-nav .brand { display: flex; align-items: center; gap: 10px; font-weight: 800; font-size: 19px; letter-spacing: -0.02em; }
+  .kb-nav .brand .dot { width: 11px; height: 11px; border-radius: 50%; background: var(--kb-blue); }
+  .kb-nav .links { display: flex; align-items: center; gap: 30px; font-size: 14.5px; color: var(--kb-text-muted); font-weight: 500; }
+  .kb-nav .links a { color: inherit; text-decoration: none; }
+  .kb-nav .cta { padding: 10px 20px; background: var(--kb-navy); color: #fff; border-radius: 999px; font-weight: 600; font-size: 14px; text-decoration: none; flex-shrink: 0; }
+
+  @media (max-width: 700px) {
+    .kb-nav { padding: 14px 5vw; }
+    .kb-nav .links { gap: 14px; }
+    .kb-nav .links a:not(.cta) { display: none; }
+  }
+
+  /* Hero */
+  .kb-hero {
     position: relative;
-    overflow: hidden;
-    padding: 90px 0 0;
-    background: linear-gradient(135deg, #ffd9c2 0%, var(--color-pink-light) 45%, #fff 80%);
-  }
-  .hero-v2-copy { max-width: 680px; margin: 0 auto; text-align: center; }
-  .hero-v2 .eyebrow-pill { background: rgba(255,255,255,0.6); }
-  .hero-v2 h1 { font-size: clamp(2.2rem, 4.4vw, 3.2rem); line-height: 1.15; }
-  .hero-v2 .lead { margin: 0 auto 32px; max-width: 560px; }
-  .hero-v2 .hero-actions { justify-content: center; margin-bottom: 56px; }
-  .btn-dark { background: var(--color-petrol); color: #fff; }
-  .btn-dark:hover { background: #06181c; text-decoration: none; }
-
-  .photo-collage {
-    display: flex;
-    justify-content: center;
-    align-items: flex-end;
-    gap: 18px;
-    padding-bottom: 0;
-  }
-  .photo-collage .frame {
-    width: 22%;
-    max-width: 190px;
-    height: 190px;
-    border-radius: 22px 22px 0 0;
-    padding: 10px 10px 0;
-    overflow: hidden;
-  }
-  .photo-collage .frame img { width: 100%; height: 100%; object-fit: cover; border-radius: 16px 16px 0 0; }
-  .photo-collage .frame:nth-child(2),
-  .photo-collage .frame:nth-child(3) { height: 230px; }
-
-  .logo-strip {
+    padding: 110px 24px 60px;
     text-align: center;
-    padding: 36px 0;
+    overflow: hidden;
   }
-  .logo-strip .label { font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.06em; color: var(--color-text-muted); margin-bottom: 18px; }
-  .logo-strip .chips { display: flex; justify-content: center; gap: 28px; flex-wrap: wrap; opacity: 0.6; }
-  .logo-strip .chips span { font-weight: 700; color: var(--color-text-muted); font-size: 0.95rem; }
+  .kb-hero::before {
+    content: "";
+    position: absolute; inset: 0; z-index: -1;
+    background:
+      radial-gradient(circle at 10% 15%, rgba(125,211,252,.45), transparent 55%),
+      radial-gradient(circle at 90% 45%, rgba(96,165,250,.35), transparent 55%),
+      radial-gradient(circle at 40% 95%, rgba(59,130,246,.25), transparent 55%);
+    filter: blur(40px);
+  }
+  .kb-hero .pill {
+    display: inline-flex; align-items: center; gap: 8px;
+    padding: 8px 17px;
+    background: rgba(255,255,255,.65);
+    backdrop-filter: blur(14px);
+    border: 1px solid rgba(255,255,255,.8);
+    box-shadow: 0 6px 22px rgba(59,130,246,.15);
+    border-radius: 999px;
+    font-size: 13px; color: #2f7fe0; font-weight: 700;
+    margin-bottom: 30px;
+  }
+  .kb-hero h1 {
+    font-weight: 800;
+    font-size: clamp(2.4rem, 6vw, 4.2rem);
+    line-height: 1.05;
+    letter-spacing: -0.03em;
+    margin-bottom: 24px;
+  }
+  .kb-hero h1 .accent {
+    background: var(--kb-grad);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+  .kb-hero p.lead {
+    font-size: 19px; line-height: 1.6; color: var(--kb-text-muted);
+    max-width: 580px; margin: 0 auto 36px;
+  }
+  .kb-hero .actions { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; margin-bottom: 64px; }
+  .kb-btn-primary {
+    padding: 16px 30px;
+    background: var(--kb-grad);
+    color: #fff; border-radius: 999px;
+    font-weight: 700; font-size: 15px;
+    text-decoration: none;
+    box-shadow: 0 10px 26px rgba(59,130,246,.35);
+  }
+  .kb-btn-secondary {
+    padding: 16px 28px;
+    background: rgba(255,255,255,.6);
+    backdrop-filter: blur(14px);
+    border: 1px solid rgba(255,255,255,.8);
+    color: var(--kb-text);
+    border-radius: 999px;
+    font-weight: 700; font-size: 15px;
+    text-decoration: none;
+  }
+  .kb-screenshot {
+    max-width: 920px; margin: 0 auto;
+    aspect-ratio: 16/7.5;
+    border-radius: 28px;
+    background: rgba(255,255,255,.5);
+    backdrop-filter: blur(30px) saturate(170%);
+    border: 1px solid rgba(255,255,255,.7);
+    box-shadow: 0 30px 80px rgba(59,130,246,.2);
+    display: flex; align-items: center; justify-content: center;
+    color: #8a93a8; font-size: 14px; font-weight: 600;
+  }
 
-  /* Feature grid with one highlighted CTA cell inline */
-  .feature-grid-cta { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
-  .feature-grid-cta .mini-card {
-    background: #fff;
-    border: 1px solid var(--color-border);
-    border-radius: 18px;
-    padding: 26px;
+  /* Logos */
+  .kb-logos { padding: 50px 24px 90px; text-align: center; }
+  .kb-logos .label { font-size: 13px; color: #9a93b0; font-weight: 600; letter-spacing: .05em; text-transform: uppercase; margin-bottom: 22px; }
+  .kb-logos .row { display: flex; justify-content: center; gap: 16px; flex-wrap: wrap; }
+  .kb-logos .row span { padding: 10px 24px; background: #fff; border: 1px solid var(--kb-border); border-radius: 12px; font-size: 13px; color: #9a93b0; font-weight: 600; }
+
+  /* Bento features */
+  .kb-section { padding: 50px 24px 100px; }
+  .kb-section-head { text-align: center; max-width: 680px; margin: 0 auto 50px; }
+  .kb-section-head .label { font-size: 14px; color: var(--kb-blue); font-weight: 700; margin-bottom: 12px; }
+  .kb-section-head h2 { font-weight: 800; font-size: clamp(1.9rem, 4vw, 2.7rem); letter-spacing: -0.03em; line-height: 1.1; margin-bottom: 14px; }
+  .kb-section-head p { color: var(--kb-text-soft); font-size: 17px; line-height: 1.5; }
+
+  .kb-bento { display: grid; grid-template-columns: repeat(6, 1fr); gap: 16px; max-width: 1100px; margin: 0 auto; }
+  .kb-glass {
+    background: rgba(255,255,255,.55);
+    backdrop-filter: blur(24px) saturate(180%);
+    border: 1px solid rgba(255,255,255,.75);
+    box-shadow: 0 18px 50px rgba(80,60,140,.12);
+    border-radius: 26px;
+    padding: 32px;
   }
-  .feature-grid-cta .mini-card .icon-line { margin-bottom: 14px; width: 40px; height: 40px; border-radius: 10px; }
-  .feature-grid-cta .mini-card .icon-line svg { width: 20px; height: 20px; }
-  .feature-grid-cta .mini-card h3 { font-size: 1rem; margin: 0 0 6px; color: var(--color-petrol); }
-  .feature-grid-cta .mini-card p { font-size: 0.88rem; color: var(--color-text-muted); margin: 0; }
-  .feature-grid-cta .cta-cell {
-    background: var(--gradient-pink);
-    border-radius: 18px;
-    padding: 26px;
+  .kb-bento .feat-wide { grid-column: span 4; display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 26px; align-items: center; }
+  .kb-bento .feat-eyebrow { font-size: 13px; font-weight: 700; color: var(--kb-blue); margin-bottom: 10px; }
+  .kb-bento .feat-wide h3 { font-weight: 800; font-size: 1.6rem; letter-spacing: -0.02em; margin-bottom: 10px; }
+  .kb-bento .feat-wide p { color: var(--kb-text-soft); font-size: 15.5px; line-height: 1.55; margin-bottom: 16px; }
+  .kb-bento .feat-wide .more { color: var(--kb-blue); font-weight: 700; font-size: 14px; }
+  .kb-bento .feat-icon-big { aspect-ratio: 1; border-radius: 20px; background: linear-gradient(150deg, rgba(92,198,245,.22), rgba(59,130,246,.16)); display: flex; align-items: center; justify-content: center; font-size: 48px; }
+  .kb-bento .feat-small { grid-column: span 2; text-align: center; }
+  .kb-bento .feat-small .ico { font-size: 38px; margin-bottom: 14px; }
+  .kb-bento .feat-small h3 { font-weight: 800; font-size: 1.2rem; letter-spacing: -0.02em; margin-bottom: 8px; }
+  .kb-bento .feat-small p { color: var(--kb-text-soft); font-size: 14px; line-height: 1.5; margin-bottom: 12px; }
+  .kb-bento .feat-small .more { color: var(--kb-blue); font-weight: 700; font-size: 13.5px; }
+  .kb-bento .feat-dark {
+    grid-column: span 6;
+    background: rgba(29,19,51,.85);
+    border: 1px solid rgba(255,255,255,.12);
     color: #fff;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    gap: 12px;
+    display: flex; align-items: center; justify-content: space-between; gap: 24px; flex-wrap: wrap;
   }
-  .feature-grid-cta .cta-cell h3 { color: #fff; margin: 0; font-size: 1.1rem; }
-  .feature-grid-cta .cta-cell p { color: rgba(255,255,255,0.9); margin: 0; font-size: 0.88rem; }
-  .feature-grid-cta .cta-cell .btn { background: #fff; color: var(--color-pink-dark); align-self: flex-start; padding: 10px 20px; font-size: 0.9rem; }
+  .kb-bento .feat-dark .left { display: flex; align-items: center; gap: 22px; }
+  .kb-bento .feat-dark .ico-box { width: 64px; height: 64px; border-radius: 18px; background: rgba(139,92,246,.3); display: flex; align-items: center; justify-content: center; font-size: 28px; flex-shrink: 0; }
+  .kb-bento .feat-dark h3 { font-weight: 800; font-size: 1.3rem; margin-bottom: 6px; }
+  .kb-bento .feat-dark p { color: #bcb6d0; font-size: 14.5px; max-width: 460px; }
+  .kb-bento .feat-dark .btn-white { padding: 13px 24px; background: #fff; color: var(--kb-text); border-radius: 999px; font-weight: 700; font-size: 14px; white-space: nowrap; }
 
-  @media (max-width: 760px) {
-    .photo-collage { display: none; }
-    .feature-grid-cta { grid-template-columns: 1fr 1fr; }
+  @media (max-width: 800px) {
+    .kb-bento .feat-wide { grid-column: span 6; grid-template-columns: 1fr; }
+    .kb-bento .feat-small { grid-column: span 3; }
   }
-  @media (max-width: 500px) {
-    .feature-grid-cta { grid-template-columns: 1fr; }
+  @media (max-width: 560px) {
+    .kb-bento .feat-small { grid-column: span 6; }
   }
+
+  /* About */
+  .kb-about { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 50px; align-items: center; max-width: 1100px; margin: 0 auto; }
+  .kb-about .label { font-size: 13px; color: var(--kb-blue); font-weight: 700; letter-spacing: .04em; text-transform: uppercase; margin-bottom: 14px; }
+  .kb-about h2 { font-weight: 800; font-size: clamp(1.7rem, 3.4vw, 2.3rem); letter-spacing: -0.03em; line-height: 1.1; margin-bottom: 20px; }
+  .kb-about p { color: var(--kb-text-muted); font-size: 16px; line-height: 1.7; margin-bottom: 16px; }
+  .kb-about .stats { display: flex; gap: 36px; margin-top: 30px; flex-wrap: wrap; }
+  .kb-about .stats strong { display: block; font-weight: 800; font-size: 1.9rem; letter-spacing: -0.02em; }
+  .kb-about .stats span { font-size: 13px; color: #9a93b0; font-weight: 500; }
+  .kb-about .photo {
+    aspect-ratio: 1; border-radius: 20px;
+    background: repeating-linear-gradient(45deg, #f3f1fa, #f3f1fa 14px, #eeeaf7 14px, #eeeaf7 28px);
+    border: 1px solid var(--kb-border);
+    display: flex; align-items: center; justify-content: center;
+    color: #9a93b0; font-size: 14px; font-weight: 600;
+  }
+
+  /* Process */
+  .kb-process-wrap { background: #fff; border-top: 1px solid var(--kb-border); border-bottom: 1px solid var(--kb-border); }
+  .kb-process { max-width: 1100px; margin: 0 auto; padding: 90px 24px; }
+  .kb-steps { display: grid; grid-template-columns: repeat(4, 1fr); gap: 28px; }
+  .kb-steps .step { text-align: center; }
+  .kb-steps .num {
+    width: 52px; height: 52px; margin: 0 auto 16px; border-radius: 50%;
+    background: #e6f2fd; color: var(--kb-blue);
+    display: flex; align-items: center; justify-content: center;
+    font-weight: 800; font-size: 18px;
+  }
+  .kb-steps .step:last-child .num { background: var(--kb-blue); color: #fff; }
+  .kb-steps h3 { font-weight: 700; font-size: 17px; margin-bottom: 8px; }
+  .kb-steps p { color: var(--kb-text-muted); font-size: 13.5px; line-height: 1.55; }
+  @media (max-width: 700px) { .kb-steps { grid-template-columns: 1fr 1fr; } }
+
+  /* Contact CTA */
+  .kb-contact-wrap { max-width: 1100px; margin: 0 auto; padding: 100px 24px; }
+  .kb-contact {
+    background: var(--kb-navy); border-radius: 28px; padding: 70px 9%;
+    text-align: center; position: relative; overflow: hidden;
+  }
+  .kb-contact::before {
+    content: "";
+    position: absolute; bottom: -120px; left: 50%; transform: translateX(-50%);
+    width: 500px; height: 300px;
+    background: radial-gradient(ellipse, rgba(47,147,245,.45), transparent 70%);
+    filter: blur(10px);
+  }
+  .kb-contact > * { position: relative; }
+  .kb-contact h2 { font-weight: 800; font-size: clamp(1.8rem, 3.6vw, 2.6rem); letter-spacing: -0.03em; color: #fff; margin-bottom: 16px; }
+  .kb-contact p { color: #bcb6d0; font-size: 17px; line-height: 1.6; max-width: 480px; margin: 0 auto 32px; }
+  .kb-contact-form { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; max-width: 480px; margin: 0 auto; }
+  .kb-contact-form input {
+    flex: 1; min-width: 220px; padding: 15px 20px;
+    background: rgba(255,255,255,.07); border: 1px solid rgba(255,255,255,.16);
+    border-radius: 999px; color: #fff; font-size: 14.5px; font-family: var(--font);
+  }
+  .kb-contact-form input::placeholder { color: #9b94b8; }
+  .kb-contact-form button {
+    padding: 15px 28px; background: var(--kb-grad); color: #fff;
+    border: none; border-radius: 999px; font-weight: 700; font-size: 14.5px; cursor: pointer;
+  }
+  .kb-contact .meta { display: flex; gap: 28px; justify-content: center; margin-top: 28px; font-size: 13.5px; color: #bcb6d0; flex-wrap: wrap; }
+
+  /* Footer */
+  .kb-footer { max-width: 1100px; margin: 0 auto; padding: 0 24px 50px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 16px; font-size: 13.5px; color: #9a93b0; }
+  .kb-footer .brand { display: flex; align-items: center; gap: 9px; font-weight: 800; color: var(--kb-navy); }
+  .kb-footer .brand .dot { width: 10px; height: 10px; border-radius: 50%; background: var(--kb-blue); }
+  .kb-footer .links { display: flex; gap: 24px; }
+  .kb-footer a { color: inherit; text-decoration: none; }
 </style>
 </head>
 <body>
 
-<div class="test-banner">🧪 Design-Testseite – nicht Teil der echten Seite, nicht in der Navigation verlinkt. <a href="index.html">Zur Startseite</a></div>
+<div class="test-banner">🧪 Design-Testseite (Onepager, Clean/Hell-Variante) – nicht Teil der echten Seite, nicht in der Navigation verlinkt. <a href="index.html">Zur Startseite</a></div>
 
-<header class="site-header">
-  <nav class="nav">
-    <a href="index.html" class="logo">systemhaus<span>24</span></a>
-    <ul class="nav-links">
-      <li><a href="#features">Lösungen</a></li>
-      <li><a href="#faq-link">Ressourcen</a></li>
-      <li><a href="#usecases">Use Cases</a></li>
-      <li><a href="leistungen.html">Preise</a></li>
-      <li><a href="#security">Sicherheit</a></li>
-    </ul>
-    <a href="kontakt.html" class="nav-cta">Loslegen</a>
-    <button class="nav-toggle" aria-label="Menü öffnen">☰</button>
-  </nav>
-</header>
+<nav class="kb-nav">
+  <div class="brand"><span class="dot"></span> systemhaus24</div>
+  <div class="links">
+    <a href="#leistungen">Leistungen</a>
+    <a href="#ueber-uns">Über uns</a>
+    <a href="#ablauf">Ablauf</a>
+    <a href="#kontakt" class="cta">Kontakt</a>
+  </div>
+</nav>
 
-<main>
-  <!-- Hero v2: centered, photo collage below (matches reference) -->
-  <section class="hero-v2">
-    <div class="container">
-      <div class="hero-v2-copy">
-        <span class="eyebrow-pill">✦ IT-Betreuung, einfach gemacht</span>
-        <h1>IT-Betreuung für <span class="accent">moderne</span> kleine Unternehmen</h1>
-        <p class="lead">Entwickelt für Teams, die einen schnelleren, einfacheren Weg zu verlässlicher IT suchen – ohne Fachchinesisch und ohne Hotline-Warteschleifen.</p>
-        <div class="hero-actions">
-          <a href="kontakt.html" class="btn btn-dark">Kostenlos starten</a>
-          <a href="leistungen.html" class="btn btn-secondary">Preise ansehen</a>
+<section class="kb-hero">
+  <span class="pill">IT-Dienstleister für KMU · Startups · Privatkunden</span>
+  <h1>IT, die einfach<br><span class="accent">läuft.</span></h1>
+  <p class="lead">Wir kümmern uns um Support, Cloud und Sicherheit — damit du dich voll auf dein Geschäft konzentrieren kannst.</p>
+  <div class="actions">
+    <a href="#kontakt" class="kb-btn-primary">Kostenloses Erstgespräch</a>
+    <a href="#leistungen" class="kb-btn-secondary">Mehr erfahren ›</a>
+  </div>
+  <div class="kb-screenshot">[ Produkt- / Dashboard-Screenshot ]</div>
+</section>
+
+<div class="kb-logos">
+  <div class="label">Diese Unternehmen vertrauen uns</div>
+  <div class="row">
+    <span>Logo 1</span><span>Logo 2</span><span>Logo 3</span><span>Logo 4</span><span>Logo 5</span>
+  </div>
+</div>
+
+<section class="kb-section" id="leistungen">
+  <div class="kb-section-head">
+    <div class="label">Leistungen</div>
+    <h2>Alles für deine IT.<br>Aus einer Hand.</h2>
+    <p>Sechs Bereiche, ein Ansprechpartner — verständlich erklärt und sauber umgesetzt.</p>
+  </div>
+  <div class="kb-bento">
+    <div class="kb-glass feat-wide">
+      <div>
+        <div class="feat-eyebrow">Rundum-Betreuung</div>
+        <h3>Managed IT &amp; Support</h3>
+        <p>Wir betreuen deine Geräte, Server und Nutzer — proaktiv, mit schneller Hilfe, wenn's mal klemmt.</p>
+        <span class="more">Mehr erfahren ›</span>
+      </div>
+      <div class="feat-icon-big">🛠️</div>
+    </div>
+    <div class="kb-glass feat-small">
+      <div class="ico">☁️</div>
+      <h3>Cloud &amp; Microsoft 365</h3>
+      <p>Mobil arbeiten von überall — sicher und immer aktuell.</p>
+      <span class="more">Mehr erfahren ›</span>
+    </div>
+    <div class="kb-glass feat-small">
+      <div class="ico">🛡️</div>
+      <h3>IT-Sicherheit</h3>
+      <p>Backups und Schutz vor Angriffen. Deine Daten bleiben sicher.</p>
+      <span class="more">Mehr erfahren ›</span>
+    </div>
+    <div class="kb-glass feat-small">
+      <div class="ico">🌐</div>
+      <h3>Netzwerk &amp; Infrastruktur</h3>
+      <p>Stabiles WLAN und saubere Netzwerke für dein Büro.</p>
+      <span class="more">Mehr erfahren ›</span>
+    </div>
+    <div class="kb-glass feat-small">
+      <div class="ico">💻</div>
+      <h3>Web &amp; Digitalisierung</h3>
+      <p>Webseiten und Prozesse, die dir echte Arbeit abnehmen.</p>
+      <span class="more">Mehr erfahren ›</span>
+    </div>
+    <div class="kb-glass feat-dark">
+      <div class="left">
+        <div class="ico-box">🧭</div>
+        <div>
+          <h3>Du weißt nicht, wo anfangen?</h3>
+          <p>Unsere IT-Beratung analysiert deine Situation und zeigt dir den klaren Weg nach vorne.</p>
         </div>
       </div>
-    </div>
-    <div class="container">
-      <div class="photo-collage">
-        <div class="frame" style="background:#cdeede;"><img src="assets/support.jpg" alt="Mitarbeiterin im Support"></div>
-        <div class="frame" style="background:#ffe1a8;"><img src="assets/hero-team.jpg" alt="Teammitglied im Gespräch"></div>
-        <div class="frame" style="background:#ffd4e3;"><img src="assets/server-room.jpg" alt="IT-Mitarbeiter im Serverraum"></div>
-        <div class="frame" style="background:#ffe1a8;"><img src="assets/cables.jpg" alt="Techniker bei der Netzwerkverkabelung"></div>
-      </div>
-    </div>
-  </section>
-
-  <div class="logo-strip">
-    <div class="label">Vertraut von kleinen & mittelständischen Unternehmen</div>
-    <div class="chips">
-      <span>Musterbau GmbH</span>
-      <span>Kanzlei Weber</span>
-      <span>Praxis am Markt</span>
-      <span>Handwerk Schmidt</span>
-      <span>Café Lindenhof</span>
+      <span class="btn-white">Beratung anfragen ›</span>
     </div>
   </div>
+</section>
 
-  <!-- Key highlights -->
-  <section class="section-alt">
-    <div class="container">
-      <div class="section-head">
-        <div class="eyebrow">Key Highlights</div>
-        <h2>Warum Teams zu systemhaus24 wechseln</h2>
+<section class="kb-section" id="ueber-uns" style="padding-top:0;">
+  <div class="kb-about">
+    <div class="photo">[ Teamfoto ]</div>
+    <div>
+      <div class="label">Über uns</div>
+      <h2>Ein Partner, der mitdenkt</h2>
+      <p>systemhaus24 ist ein kleines Team mit großem Anspruch. Wir reden Klartext, sind erreichbar und behandeln deine IT, als wäre es unsere eigene.</p>
+      <p>Ob laufende Betreuung oder einmaliges Projekt — du hast immer einen festen Ansprechpartner.</p>
+      <div class="stats">
+        <div><strong>120+</strong><span>zufriedene Kunden</span></div>
+        <div><strong>&lt; 2 Std</strong><span>Reaktionszeit</span></div>
+        <div><strong>99,9%</strong><span>Verfügbarkeit</span></div>
       </div>
-      <div class="highlight-row">
-        <div class="item"><span class="check">✓</span><p>Ein Ansprechpartner statt fünf verschiedener Dienstleister</p></div>
-        <div class="item"><span class="check">✓</span><p>Transparente Pakete statt Stundenzettel-Überraschung</p></div>
-        <div class="item"><span class="check">✓</span><p>Reaktionszeit unter 2 Stunden, garantiert im Vertrag</p></div>
-        <div class="item"><span class="check">✓</span><p>Hosting & Backup ausschließlich in Deutschland/EU</p></div>
-        <div class="item"><span class="check">✓</span><p>Kein Callcenter – feste, erreichbare Ansprechpartner</p></div>
-        <div class="item"><span class="check">✓</span><p>DSGVO-konforme Prozesse von Anfang an mitgedacht</p></div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Features grid -->
-  <section id="features">
-    <div class="container">
-      <div class="section-head">
-        <div class="eyebrow">Features & Leistungen</div>
-        <h2>Alles, was Ihre IT braucht</h2>
-        <p>Acht Leistungsbereiche, ein Vertrag, ein Ansprechpartner.</p>
-      </div>
-      <div class="feature-grid-cta">
-        <div class="mini-card">
-          <div class="icon-line"><svg viewBox="0 0 256 256" fill="currentColor"><path d="M176,128a48,48,0,1,1-48-48A48,48,0,0,1,176,128Z" opacity="0.35"/><path d="M221.87,83.16A104.1,104.1,0,1,1,195.67,49l22.67-22.68a8,8,0,0,1,11.32,11.32l-96,96a8,8,0,0,1-11.32-11.32l27.72-27.72a40,40,0,1,0,17.87,31.09,8,8,0,1,1,16-.9,56,56,0,1,1-22.38-41.65L184.3,60.39a87.88,87.88,0,1,0,23.13,29.67,8,8,0,0,1,14.44-6.9Z"/></svg></div>
-          <h3>IT-Beratung & Strategie</h3>
-          <p>Analyse Ihrer bestehenden IT und ein Konzept, das zu Ihrem Budget passt.</p>
-        </div>
-        <div class="mini-card">
-          <div class="icon-line"><svg viewBox="0 0 256 256" fill="currentColor"><path d="M240,128a80,80,0,0,1-80,80H72A56,56,0,1,1,85.92,97.74l0,.1A80,80,0,0,1,240,128Z" opacity="0.35"/><path d="M160,40A88.09,88.09,0,0,0,81.29,88.67,64,64,0,1,0,72,216h88a88,88,0,0,0,0-176Zm0,160H72a48,48,0,0,1,0-96c1.1,0,2.2,0,3.29.11A88,88,0,0,0,72,128a8,8,0,0,0,16,0,72,72,0,1,1,72,72Z"/></svg></div>
-          <h3>Cloud-Lösungen</h3>
-          <p>Cloud-Server, automatisierte Backups und Migration ohne Ausfallzeiten.</p>
-        </div>
-        <div class="mini-card">
-          <div class="icon-line"><svg viewBox="0 0 256 256" fill="currentColor"><path d="M216,56v56c0,96-88,120-88,120S40,208,40,112V56a8,8,0,0,1,8-8H208A8,8,0,0,1,216,56Z" opacity="0.35"/><path d="M208,40H48A16,16,0,0,0,32,56v56c0,52.72,25.52,84.67,46.93,102.19,23.06,18.86,46,25.26,47,25.53a8,8,0,0,0,4.2,0c1-.27,23.91-6.67,47-25.53C198.48,196.67,224,164.72,224,112V56A16,16,0,0,0,208,40Zm0,72c0,37.07-13.66,67.16-40.6,89.42A129.3,129.3,0,0,1,128,223.62a128.25,128.25,0,0,1-38.92-21.81C61.82,179.51,48,149.3,48,112l0-56,160,0ZM82.34,141.66a8,8,0,0,1,11.32-11.32L112,148.69l50.34-50.35a8,8,0,0,1,11.32,11.32l-56,56a8,8,0,0,1-11.32,0Z"/></svg></div>
-          <h3>IT-Sicherheit</h3>
-          <p>Firewall, Virenschutz und Disaster Recovery aus einer Hand.</p>
-        </div>
-        <div class="mini-card">
-          <div class="icon-line"><svg viewBox="0 0 256 256" fill="currentColor"><path d="M230.1,108.76,198.25,90.62c-.64-1.16-1.31-2.29-2-3.41l-.12-36A104.61,104.61,0,0,0,162,32L130,49.89c-1.34,0-2.69,0-4,0L94,32A104.58,104.58,0,0,0,59.89,51.25l-.16,36c-.7,1.12-1.37,2.26-2,3.41l-31.84,18.1a99.15,99.15,0,0,0,0,38.46l31.85,18.14c.64,1.16,1.31,2.29,2,3.41l.12,36A104.61,104.61,0,0,0,94,224l32-17.87c1.34,0,2.69,0,4,0L162,224a104.58,104.58,0,0,0,34.08-19.25l.16-36c.7-1.12,1.37-2.26,2-3.41l31.84-18.1A99.15,99.15,0,0,0,230.1,108.76ZM128,168a40,40,0,1,1,40-40A40,40,0,0,1,128,168Z" opacity="0.35"/><path d="M128,80a48,48,0,1,0,48,48A48.05,48.05,0,0,0,128,80Zm0,80a32,32,0,1,1,32-32A32,32,0,0,1,128,160Zm109.94-52.79a8,8,0,0,0-3.89-5.4l-29.83-17-.12-33.62a8,8,0,0,0-2.83-6.08,111.91,111.91,0,0,0-36.72-20.67,8,8,0,0,0-6.46.59L128,41.85,97.88,25a8,8,0,0,0-6.47-.6A111.92,111.92,0,0,0,54.73,45.15a8,8,0,0,0-2.83,6.07l-.15,33.65-29.83,17a8,8,0,0,0-3.89,5.4,106.47,106.47,0,0,0,0,41.56,8,8,0,0,0,3.89,5.4l29.83,17,.12,33.63a8,8,0,0,0,2.83,6.08,111.91,111.91,0,0,0,36.72,20.67,8,8,0,0,0,6.46-.59L128,214.15,158.12,231a7.91,7.91,0,0,0,3.9,1,8.09,8.09,0,0,0,2.57-.42,112.1,112.1,0,0,0,36.68-20.73,8,8,0,0,0,2.83-6.07l.15-33.65,29.83-17a8,8,0,0,0,3.89-5.4A106.47,106.47,0,0,0,237.94,107.21Z"/></svg></div>
-          <h3>Managed Services</h3>
-          <p>Laufendes Monitoring & Helpdesk, bevor Störungen auffallen.</p>
-        </div>
-        <div class="mini-card">
-          <div class="icon-line"><svg viewBox="0 0 256 256" fill="currentColor"><path d="M80,144v40a16,16,0,0,1-16,16H48a16,16,0,0,1-16-16V128H64A16,16,0,0,1,80,144Zm112-16a16,16,0,0,0-16,16v40a16,16,0,0,0,16,16h32V128Z" opacity="0.35"/><path d="M201.89,54.66A104.08,104.08,0,0,0,24,128v56a24,24,0,0,0,24,24H64a24,24,0,0,0,24-24V144a24,24,0,0,0-24-24H40.36A88.12,88.12,0,0,1,190.54,65.93,87.39,87.39,0,0,1,215.65,120H192a24,24,0,0,0-24,24v40a24,24,0,0,0,24,24h24a24,24,0,0,1-24,24H136a8,8,0,0,0,0,16h56a40,40,0,0,0,40-40V128A103.41,103.41,0,0,0,201.89,54.66ZM64,136a8,8,0,0,1,8,8v40a8,8,0,0,1-8,8H48a8,8,0,0,1-8-8V136Zm128,56a8,8,0,0,1-8-8V144a8,8,0,0,1,8-8h24v56Z"/></svg></div>
-          <h3>Support & Helpdesk</h3>
-          <p>Feste Ansprechpartner, Remote- und Vor-Ort-Support.</p>
-        </div>
-        <div class="cta-cell">
-          <h3>Jetzt starten</h3>
-          <p>Kostenloses Erstgespräch, unverbindlich und in 24 Std. terminiert.</p>
-          <a href="kontakt.html" class="btn">Loslegen</a>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Live preview -->
-  <section class="section-alt" id="preview">
-    <div class="container">
-      <div class="split">
-        <div class="split-media">
-          <img src="assets/server-room.jpg" alt="Serverraum" width="600" height="380" loading="lazy">
-        </div>
-        <div class="split-copy">
-          <div class="eyebrow">Live-Vorschau</div>
-          <h2>So sieht Ihre IT-Betreuung aus</h2>
-          <p>Ein zentrales Dashboard statt fünf Tools: Reaktionszeiten, offene Tickets und Systemstatus auf einen Blick – inklusive monatlichem Statusbericht in verständlicher Sprache.</p>
-          <a href="kontakt.html" class="btn btn-secondary">Demo anfragen</a>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Comparison table -->
-  <section>
-    <div class="container">
-      <div class="section-head">
-        <div class="eyebrow">Vergleich</div>
-        <h2>systemhaus24 vs. klassischer IT-Support</h2>
-      </div>
-      <table class="compare-table">
-        <thead>
-          <tr><th>Kriterium</th><th>systemhaus24</th><th>Klassische Hotline</th></tr>
-        </thead>
-        <tbody>
-          <tr><td>Fester Ansprechpartner</td><td class="yes">✓ Ja</td><td class="no">Wechselnd</td></tr>
-          <tr><td>Reaktionszeit garantiert</td><td class="yes">✓ &lt; 2 Std.</td><td class="no">Unklar</td></tr>
-          <tr><td>Transparente Pakete</td><td class="yes">✓ Ja</td><td class="no">Stundenzettel</td></tr>
-          <tr><td>Hosting-Standort</td><td class="yes">✓ DE/EU</td><td class="no">Oft unklar</td></tr>
-          <tr><td>Proaktives Monitoring</td><td class="yes">✓ 24/7</td><td class="no">Reaktiv</td></tr>
-        </tbody>
-      </table>
-    </div>
-  </section>
-
-  <!-- Who this is for -->
-  <section class="section-alt" id="usecases">
-    <div class="container">
-      <div class="section-head">
-        <div class="eyebrow">Für wen geeignet</div>
-        <h2>Wer von systemhaus24 profitiert</h2>
-      </div>
-      <div class="why-grid">
-        <div>
-          <div class="icon"><svg viewBox="0 0 256 256" width="22" height="22" fill="currentColor"><path d="M200,152l-40,40L96,176,40,136,72.68,70.63,128,56l55.32,14.63L183.6,72H144L98.34,116.29a8,8,0,0,0,1.38,12.42C117.23,139.9,141,139.13,160,120Z" opacity="0.35"/><path d="M254.3,107.91,228.78,56.85a16,16,0,0,0-21.47-7.15L182.44,62.13,130.05,48.27a8.14,8.14,0,0,0-4.1,0L73.56,62.13,48.69,49.7a16,16,0,0,0-21.47,7.15L1.7,107.9a16,16,0,0,0,7.15,21.47l27,13.51,55.49,39.63a8.06,8.06,0,0,0,2.71,1.25l64,16a8,8,0,0,0,7.6-2.1l55.07-55.08,26.42-13.21a16,16,0,0,0,7.15-21.46Z"/></svg></div>
-          <h3>Kleine Unternehmen ohne eigene IT</h3>
-          <p>Sie brauchen einen Partner, der alles übernimmt – ohne eigene IT-Abteilung aufzubauen.</p>
-        </div>
-        <div>
-          <div class="icon"><svg viewBox="0 0 256 256" width="22" height="22" fill="currentColor"><path d="M96,240l16-80L48,136,160,16,144,96l64,24Z" opacity="0.35"/><path d="M215.79,118.17a8,8,0,0,0-5-5.66L153.18,90.9l14.66-73.33a8,8,0,0,0-13.69-7l-112,120a8,8,0,0,0,3,13l57.63,21.61L88.16,238.43a8,8,0,0,0,13.69,7l112-120A8,8,0,0,0,215.79,118.17Z"/></svg></div>
-          <h3>Wachsende Teams</h3>
-          <p>Ihre IT muss mitwachsen, ohne dass jede Erweiterung zum Projekt wird.</p>
-        </div>
-        <div>
-          <div class="icon"><svg viewBox="0 0 256 256" width="22" height="22" fill="currentColor"><path d="M216,56v56c0,96-88,120-88,120S40,208,40,112V56a8,8,0,0,1,8-8H208A8,8,0,0,1,216,56Z" opacity="0.35"/><path d="M208,40H48A16,16,0,0,0,32,56v56c0,52.72,25.52,84.67,46.93,102.19,23.06,18.86,46,25.26,47,25.53a8,8,0,0,0,4.2,0c1-.27,23.91-6.67,47-25.53C198.48,196.67,224,164.72,224,112V56A16,16,0,0,0,208,40Z"/></svg></div>
-          <h3>Unternehmen mit Compliance-Pflicht</h3>
-          <p>DSGVO und IT-Sicherheit sind kein Nice-to-have, sondern Voraussetzung.</p>
-        </div>
-        <div>
-          <div class="icon"><svg viewBox="0 0 256 256" width="22" height="22" fill="currentColor"><path d="M12 3l9 4.5-9 4.5-9-4.5L12 3z" opacity="0.35"/><path d="M251.76,88.94l-120-64a8,8,0,0,0-7.52,0l-120,64a8,8,0,0,0,0,14.12L32,117.87v48.42a15.91,15.91,0,0,0,4.06,10.65C49.16,191.53,78.51,216,128,216a130,130,0,0,0,48-8.76V240a8,8,0,0,0,16,0V199.51a115.63,115.63,0,0,0,27.94-22.57A15.91,15.91,0,0,0,224,166.29V117.87l27.76-14.81a8,8,0,0,0,0-14.12Z"/></svg></div>
-          <h3>Unternehmen mit Altsystemen</h3>
-          <p>Eine Migration in die Cloud soll ohne Ausfallzeiten gelingen.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Getting started steps -->
-  <section id="security">
-    <div class="container">
-      <div class="section-head">
-        <div class="eyebrow">Loslegen</div>
-        <h2>So starten Sie mit systemhaus24</h2>
-      </div>
-      <div class="process-steps">
-        <div class="process-step">
-          <div class="num">1</div>
-          <h4>Erstgespräch</h4>
-          <p>Kostenlos und unverbindlich Bedarf klären.</p>
-        </div>
-        <div class="process-step">
-          <div class="num">2</div>
-          <h4>IT-Check</h4>
-          <p>Analyse Ihrer bestehenden Infrastruktur.</p>
-        </div>
-        <div class="process-step">
-          <div class="num">3</div>
-          <h4>Konzept & Angebot</h4>
-          <p>Transparentes Konzept mit klarer Kostenplanung.</p>
-        </div>
-        <div class="process-step">
-          <div class="num">4</div>
-          <h4>Umsetzung</h4>
-          <p>Wir setzen um, ohne Ihren Betrieb zu stören.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="section-alt">
-    <div class="container">
-      <div class="cta-band" style="margin:0;">
-        <h2>Bereit, IT abzugeben statt zu verwalten?</h2>
-        <p>Vereinbaren Sie jetzt Ihre kostenlose Erstberatung.</p>
-        <a href="kontakt.html" class="btn btn-primary">Jetzt loslegen</a>
-      </div>
-    </div>
-  </section>
-</main>
-
-<footer class="site-footer">
-  <div class="container">
-    <div class="footer-bottom">
-      <span>🧪 Testseite – kein Bestandteil der echten Website.</span>
-      <span><a href="index.html">Zur echten Startseite</a></span>
     </div>
   </div>
+</section>
+
+<div class="kb-process-wrap" id="ablauf">
+  <div class="kb-process">
+    <div class="kb-section-head" style="margin-bottom:56px;">
+      <h2>So einfach geht's</h2>
+      <p>In vier klaren Schritten zu sorgenfreier IT.</p>
+    </div>
+    <div class="kb-steps">
+      <div class="step"><div class="num">1</div><h3>Analyse</h3><p>Wir hören zu und prüfen deine aktuelle IT.</p></div>
+      <div class="step"><div class="num">2</div><h3>Konzept</h3><p>Klarer Plan mit fairen, verständlichen Preisen.</p></div>
+      <div class="step"><div class="num">3</div><h3>Umsetzung</h3><p>Wir setzen alles sauber um — ohne Stress.</p></div>
+      <div class="step"><div class="num">4</div><h3>Betreuung</h3><p>Wir bleiben dran — dauerhaft an deiner Seite.</p></div>
+    </div>
+  </div>
+</div>
+
+<div class="kb-contact-wrap" id="kontakt">
+  <div class="kb-contact">
+    <h2>Bereit, deine IT zu vereinfachen?</h2>
+    <p>Kostenloses Erstgespräch, unverbindlich. Wir melden uns innerhalb eines Werktags.</p>
+    <form class="kb-contact-form" action="https://formspree.io/f/DEINE_FORM_ID" method="POST">
+      <input type="email" name="email" placeholder="Deine E-Mail" required>
+      <button type="submit">Gespräch anfragen</button>
+    </form>
+    <div class="meta"><span>✉ info@systemhaus24.net</span><span>☎ +49 (0) 00 000000</span></div>
+  </div>
+</div>
+
+<footer class="kb-footer">
+  <div class="brand"><span class="dot"></span> systemhaus24</div>
+  <div class="links"><a href="impressum.html">Impressum</a><a href="datenschutz.html">Datenschutz</a><span>© 2026 systemhaus24</span></div>
 </footer>
 
-<script src="js/main.js"></script>
 </body>
 </html>
