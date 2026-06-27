@@ -333,6 +333,30 @@
 .sh-hero-bullets .item .check { color: #1ea672; font-weight: 800; flex-shrink: 0; }
 @media (max-width: 600px) { .sh-hero-bullets { grid-template-columns: 1fr; } }
 
+/* Partner logo lockup (header strip for co-branded product pages) */
+.sh-partner-lockup {
+  display: inline-flex; align-items: center; gap: 16px;
+  background: #fff; border: 1px solid var(--sh-border); border-radius: 999px;
+  padding: 10px 22px; margin-bottom: 28px;
+  box-shadow: 0 8px 24px rgba(80,60,140,.08);
+}
+.sh-partner-lockup .logo-slot {
+  display: flex; align-items: center; justify-content: center;
+  height: 26px; min-width: 90px;
+  font-size: 11px; color: #b3acc7; font-weight: 700; letter-spacing: .03em;
+  border: 1px dashed #d8d3e8; border-radius: 6px; padding: 0 10px;
+}
+.sh-partner-lockup .x { color: var(--sh-text-soft); font-size: 13px; }
+
+/* Bulleted sub-list inside process steps */
+.sh-steps .step ul { margin: 8px auto 0; padding-left: 18px; max-width: 220px; text-align: left; }
+.sh-steps .step li { color: var(--sh-text-muted); font-size: 13.5px; line-height: 1.6; }
+
+.sh-intro-text { max-width: 720px; margin: 0 auto 40px; text-align: center; color: var(--sh-text-muted); font-size: 16px; line-height: 1.6; }
+.sh-intro-text--spaced { margin-bottom: 50px; }
+.sh-intro-text--tight { margin-top: -16px; }
+.sh-closing-text { max-width: 720px; margin: 40px auto 0; text-align: center; color: var(--sh-text-soft); font-size: 15px; line-height: 1.6; }
+
 /* Competence / partnership badges */
 .sh-badge-row { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; max-width: 900px; margin: 0 auto; }
 .sh-badge-row .badge {
