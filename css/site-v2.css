@@ -305,6 +305,43 @@
 .sh-footer .links { display: flex; gap: 24px; }
 .sh-footer a { text-decoration: none; }
 
+/* Problem grid (challenges section) */
+.sh-problem-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; max-width: 1100px; margin: 0 auto; }
+.sh-problem-card { background: #fff; border: 1px solid var(--sh-border); border-radius: 20px; padding: 26px; }
+.sh-problem-card .ico { font-size: 30px; margin-bottom: 14px; }
+.sh-problem-card h3 { font-weight: 800; font-size: 1.05rem; margin-bottom: 8px; letter-spacing: -0.01em; }
+.sh-problem-card p { color: var(--sh-text-soft); font-size: 14px; line-height: 1.5; }
+@media (max-width: 800px) { .sh-problem-grid { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 500px) { .sh-problem-grid { grid-template-columns: 1fr; } }
+
+/* Plain 4-col feature grid (equal-weight cards, no bento hierarchy) */
+.sh-feature-grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; max-width: 1100px; margin: 0 auto; }
+.sh-feature-grid-4 .sh-glass { text-align: left; }
+.sh-feature-grid-4 .sh-glass .ico { font-size: 32px; margin-bottom: 14px; }
+.sh-feature-grid-4 .sh-glass h3 { font-weight: 800; font-size: 1.05rem; margin-bottom: 8px; letter-spacing: -0.01em; }
+.sh-feature-grid-4 .sh-glass p { color: var(--sh-text-soft); font-size: 13.5px; line-height: 1.5; }
+@media (max-width: 900px) { .sh-feature-grid-4 { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 500px) { .sh-feature-grid-4 { grid-template-columns: 1fr; } }
+
+/* Hero bullet list (for content-dense product pages) */
+.sh-hero-bullets {
+  display: grid; grid-template-columns: repeat(2, auto); gap: 12px 36px;
+  justify-content: center; text-align: left;
+  max-width: 620px; margin: 0 auto 40px;
+}
+.sh-hero-bullets .item { display: flex; align-items: flex-start; gap: 10px; font-size: 14.5px; color: var(--sh-text-muted); font-weight: 500; }
+.sh-hero-bullets .item .check { color: #1ea672; font-weight: 800; flex-shrink: 0; }
+@media (max-width: 600px) { .sh-hero-bullets { grid-template-columns: 1fr; } }
+
+/* Competence / partnership badges */
+.sh-badge-row { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; max-width: 900px; margin: 0 auto; }
+.sh-badge-row .badge {
+  background: #fff; border: 1px solid var(--sh-border); border-radius: 16px;
+  padding: 18px 24px; text-align: center; flex: 1; min-width: 180px;
+}
+.sh-badge-row .badge strong { display: block; font-weight: 800; font-size: 1.3rem; color: var(--sh-blue); margin-bottom: 4px; }
+.sh-badge-row .badge span { font-size: 13px; color: var(--sh-text-soft); }
+
 /* Utility classes (avoid inline style="" attributes — CSP has no 'unsafe-inline') */
 .sh-link-card { text-decoration: none; color: inherit; display: block; }
 .sh-section--flush-top { padding-top: 0; }
