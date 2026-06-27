@@ -38,16 +38,19 @@
 .sh-nav-dropdown > span { cursor: pointer; display: inline-flex; align-items: center; gap: 5px; }
 .sh-nav-dropdown > span::after { content: "▾"; font-size: 10px; }
 .sh-nav-dropdown .menu {
-  position: absolute; top: calc(100% + 14px); left: 50%; transform: translateX(-50%);
+  position: absolute; top: 100%; left: 50%; transform: translateX(-50%);
+  padding-top: 14px; /* bridges the gap so hover doesn't break crossing it */
+  min-width: 220px;
+  opacity: 0; visibility: hidden; pointer-events: none;
+  transition: opacity 0.18s ease, transform 0.18s ease;
+}
+.sh-nav-dropdown .menu .menu-inner {
   background: rgba(255,255,255,.9);
   backdrop-filter: blur(20px) saturate(180%);
   border: 1px solid rgba(255,255,255,.8);
   box-shadow: 0 18px 50px rgba(80,60,140,.18);
   border-radius: 16px;
   padding: 8px;
-  min-width: 220px;
-  opacity: 0; visibility: hidden; pointer-events: none;
-  transition: opacity 0.18s ease, transform 0.18s ease;
 }
 .sh-nav-dropdown:hover .menu,
 .sh-nav-dropdown.open .menu {
@@ -79,10 +82,13 @@
   .sh-nav-dropdown.open .menu {
     position: static; transform: none; left: auto; top: auto;
     opacity: 1; visibility: visible; pointer-events: auto;
-    box-shadow: none; border: none; background: transparent;
-    padding: 6px 0 0 14px; display: none; min-width: 0;
+    padding: 6px 0 0; display: none; min-width: 0;
   }
   .sh-nav-dropdown.open .menu { display: block; }
+  .sh-nav-dropdown .menu .menu-inner {
+    box-shadow: none; border: none; background: transparent;
+    padding: 0 0 0 14px;
+  }
   .sh-nav .cta { display: none; }
   .sh-nav-toggle { display: block; }
 }
