@@ -29,7 +29,7 @@
 }
 .sh-nav .brand { display: flex; align-items: center; gap: 10px; font-weight: 800; font-size: 19px; letter-spacing: -0.02em; text-decoration: none; flex-shrink: 0; }
 .sh-nav .brand .dot { width: 11px; height: 11px; border-radius: 50%; background: var(--sh-blue); }
-.sh-nav .brand .logo-mark { width: 28px; height: 28px; border-radius: 8px; flex-shrink: 0; }
+.sh-nav .brand .logo-mark { height: 26px; width: auto; max-width: 140px; border-radius: 0; flex-shrink: 0; }
 .sh-nav .links { display: flex; align-items: center; gap: 28px; font-size: 14.5px; color: var(--sh-text-muted); font-weight: 500; }
 .sh-nav .links > a { text-decoration: none; }
 .sh-nav .cta { padding: 10px 20px; background: var(--sh-navy); color: #fff; border-radius: 999px; font-weight: 600; font-size: 14px; text-decoration: none; flex-shrink: 0; }
@@ -336,7 +336,7 @@
 .sh-footer { max-width: 1100px; margin: 0 auto; padding: 0 24px 50px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 16px; font-size: 13.5px; color: #9a93b0; }
 .sh-footer .brand { display: flex; align-items: center; gap: 9px; font-weight: 800; color: var(--sh-navy); text-decoration: none; }
 .sh-footer .brand .dot { width: 10px; height: 10px; border-radius: 50%; background: var(--sh-blue); }
-.sh-footer .brand .logo-mark { width: 24px; height: 24px; border-radius: 7px; flex-shrink: 0; }
+.sh-footer .brand .logo-mark { height: 22px; width: auto; max-width: 130px; border-radius: 0; flex-shrink: 0; }
 .sh-footer .links { display: flex; gap: 24px; }
 .sh-footer a { text-decoration: none; }
 
