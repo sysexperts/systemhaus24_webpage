@@ -355,6 +355,60 @@
   .sh-about .photo { order: -1; max-width: 360px; margin: 0 auto; }
 }
 
+/* Process v2: split layout, text + numbered card stack */
+.sh-process-split {
+  display: grid;
+  grid-template-columns: 0.95fr 1.05fr;
+  gap: 56px;
+  align-items: center;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 90px 24px;
+}
+.sh-process-split .pill {
+  display: inline-flex; align-items: center;
+  background: var(--sh-blue-light, #e6f2fd);
+  background: rgba(59,130,246,.1);
+  color: var(--sh-blue);
+  font-size: 12.5px; font-weight: 700; letter-spacing: .04em; text-transform: uppercase;
+  padding: 8px 16px; border-radius: 999px;
+  margin-bottom: 22px;
+}
+.sh-process-split h2 { font-weight: 800; font-size: clamp(1.8rem, 3.4vw, 2.5rem); letter-spacing: -0.03em; line-height: 1.15; margin-bottom: 18px; }
+.sh-process-split p { color: var(--sh-text-muted); font-size: 16px; line-height: 1.6; margin-bottom: 28px; max-width: 440px; }
+.sh-process-split .sh-btn-primary { display: inline-flex; }
+
+.sh-process-cards {
+  background: linear-gradient(160deg, rgba(92,198,245,.12), rgba(59,130,246,.06));
+  border-radius: 28px;
+  padding: 22px;
+  display: flex; flex-direction: column; gap: 14px;
+}
+.sh-process-cards .pcard {
+  background: #fff; border-radius: 18px; padding: 18px 20px;
+  display: flex; align-items: flex-start; gap: 16px;
+  box-shadow: 0 8px 24px rgba(59,130,246,.08);
+  transition: transform 0.3s cubic-bezier(.2,.8,.2,1), box-shadow 0.3s ease;
+}
+.sh-process-cards .pcard:hover { transform: translateX(6px); box-shadow: 0 14px 36px rgba(59,130,246,.16); }
+.sh-process-cards .pcard .num {
+  flex-shrink: 0;
+  width: 34px; height: 34px; border-radius: 10px;
+  background: var(--sh-grad);
+  color: #fff; font-weight: 800; font-size: 14px;
+  display: flex; align-items: center; justify-content: center;
+}
+.sh-process-cards .pcard h3 { font-weight: 800; font-size: 1rem; margin-bottom: 4px; }
+.sh-process-cards .pcard p { color: var(--sh-text-soft); font-size: 13.5px; line-height: 1.5; margin: 0; }
+
+@media (max-width: 860px) {
+  .sh-process-split { grid-template-columns: 1fr; gap: 36px; padding: 60px 24px; }
+  .sh-process-split p { max-width: none; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .sh-process-cards .pcard { transition: none; }
+}
+
 /* Process */
 .sh-process-wrap { background: #fff; border-top: 1px solid var(--sh-border); border-bottom: 1px solid var(--sh-border); }
 .sh-process { max-width: 1100px; margin: 0 auto; padding: 90px 24px; }
