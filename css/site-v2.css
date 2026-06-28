@@ -260,10 +260,14 @@
   aspect-ratio: 1; border-radius: 20px;
   background: var(--sh-grad);
   display: flex; align-items: center; justify-content: center;
+  overflow: hidden;
   transition: transform 0.4s cubic-bezier(.2,.8,.2,1);
 }
 .sh-bento .feat-icon-big svg { width: 56px; height: 56px; stroke: #fff; fill: none; stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; }
+.sh-bento .feat-icon-big img { width: 100%; height: 100%; object-fit: cover; }
 .sh-glass:hover .feat-icon-big { transform: scale(1.06) rotate(-2deg); }
+.sh-glass:hover .feat-icon-big img { transform: scale(1.08); }
+.sh-bento .feat-icon-big img { transition: transform 0.5s cubic-bezier(.2,.8,.2,1); }
 
 .sh-bento .feat-small { grid-column: span 2; text-align: center; }
 .sh-bento .feat-small .ico {
