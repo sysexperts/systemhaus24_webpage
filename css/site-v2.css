@@ -222,40 +222,105 @@
 /* Bento features */
 .sh-bento { display: grid; grid-template-columns: repeat(6, 1fr); gap: 16px; max-width: 1100px; margin: 0 auto; }
 .sh-glass {
+  position: relative;
   background: rgba(255,255,255,.55);
   backdrop-filter: blur(24px) saturate(180%);
   border: 1px solid rgba(255,255,255,.75);
   box-shadow: 0 18px 50px rgba(80,60,140,.12);
   border-radius: 26px;
   padding: 32px;
+  overflow: hidden;
+  transition: transform 0.3s cubic-bezier(.2,.8,.2,1), box-shadow 0.3s ease, border-color 0.3s ease;
 }
+.sh-glass::before {
+  content: "";
+  position: absolute; inset: 0;
+  border-radius: inherit;
+  background: linear-gradient(135deg, rgba(92,198,245,.16), rgba(59,130,246,.10));
+  opacity: 0;
+  transition: opacity 0.35s ease;
+  pointer-events: none;
+}
+.sh-glass:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 26px 64px rgba(59,130,246,.22);
+  border-color: rgba(92,198,245,.6);
+}
+.sh-glass:hover::before { opacity: 1; }
+.sh-glass > * { position: relative; z-index: 1; }
+
 .sh-bento .feat-wide { grid-column: span 4; display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 26px; align-items: center; }
 .sh-bento .feat-eyebrow { font-size: 13px; font-weight: 700; color: var(--sh-blue); margin-bottom: 10px; }
 .sh-bento .feat-wide h3 { font-weight: 800; font-size: 1.6rem; letter-spacing: -0.02em; margin-bottom: 10px; }
 .sh-bento .feat-wide p { color: var(--sh-text-soft); font-size: 15.5px; line-height: 1.55; margin-bottom: 16px; }
-.sh-bento .feat-wide .more { color: var(--sh-blue); font-weight: 700; font-size: 14px; text-decoration: none; }
-.sh-bento .feat-icon-big { aspect-ratio: 1; border-radius: 20px; background: linear-gradient(150deg, rgba(92,198,245,.22), rgba(59,130,246,.16)); display: flex; align-items: center; justify-content: center; font-size: 48px; }
+.sh-bento .feat-wide .more { display: inline-flex; align-items: center; gap: 6px; color: var(--sh-blue); font-weight: 700; font-size: 14px; text-decoration: none; }
+.sh-bento .feat-wide .more svg { width: 14px; height: 14px; transition: transform 0.25s ease; }
+.sh-bento .feat-wide:hover .more svg { transform: translateX(4px); }
+.sh-bento .feat-icon-big {
+  aspect-ratio: 1; border-radius: 20px;
+  background: var(--sh-grad);
+  display: flex; align-items: center; justify-content: center;
+  transition: transform 0.4s cubic-bezier(.2,.8,.2,1);
+}
+.sh-bento .feat-icon-big svg { width: 56px; height: 56px; stroke: #fff; fill: none; stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; }
+.sh-glass:hover .feat-icon-big { transform: scale(1.06) rotate(-2deg); }
+
 .sh-bento .feat-small { grid-column: span 2; text-align: center; }
-.sh-bento .feat-small .ico { font-size: 38px; margin-bottom: 14px; }
+.sh-bento .feat-small .ico {
+  width: 56px; height: 56px; margin: 0 auto 16px;
+  border-radius: 16px;
+  background: linear-gradient(150deg, rgba(92,198,245,.2), rgba(59,130,246,.14));
+  display: flex; align-items: center; justify-content: center;
+  transition: transform 0.35s cubic-bezier(.2,.8,.2,1);
+}
+.sh-bento .feat-small .ico svg { width: 26px; height: 26px; stroke: var(--sh-blue); fill: none; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+.sh-glass:hover .feat-small .ico { transform: scale(1.12) rotate(-4deg); }
 .sh-bento .feat-small h3 { font-weight: 800; font-size: 1.2rem; letter-spacing: -0.02em; margin-bottom: 8px; }
 .sh-bento .feat-small p { color: var(--sh-text-soft); font-size: 14px; line-height: 1.5; margin-bottom: 12px; }
-.sh-bento .feat-small .more { color: var(--sh-blue); font-weight: 700; font-size: 13.5px; text-decoration: none; }
+.sh-bento .feat-small .more { display: inline-flex; align-items: center; gap: 5px; color: var(--sh-blue); font-weight: 700; font-size: 13.5px; text-decoration: none; }
+.sh-bento .feat-small .more svg { width: 13px; height: 13px; transition: transform 0.25s ease; }
+.sh-glass:hover .feat-small .more svg { transform: translateX(3px); }
+
 .sh-bento .feat-dark {
   grid-column: span 6;
-  background: rgba(29,19,51,.85);
+  background: linear-gradient(125deg, #241644, #1a1130 60%);
   border: 1px solid rgba(255,255,255,.12);
   color: #fff;
   display: flex; align-items: center; justify-content: space-between; gap: 24px; flex-wrap: wrap;
 }
+.sh-bento .feat-dark::before {
+  background: radial-gradient(circle at 85% 30%, rgba(92,198,245,.35), transparent 60%);
+}
 .sh-bento .feat-dark .left { display: flex; align-items: center; gap: 22px; }
-.sh-bento .feat-dark .ico-box { width: 64px; height: 64px; border-radius: 18px; background: rgba(139,92,246,.3); display: flex; align-items: center; justify-content: center; font-size: 28px; flex-shrink: 0; }
+.sh-bento .feat-dark .ico-box {
+  width: 64px; height: 64px; border-radius: 18px;
+  background: linear-gradient(150deg, rgba(92,198,245,.4), rgba(59,130,246,.3));
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+  transition: transform 0.35s cubic-bezier(.2,.8,.2,1);
+}
+.sh-bento .feat-dark .ico-box svg { width: 30px; height: 30px; stroke: #fff; fill: none; stroke-width: 1.7; stroke-linecap: round; stroke-linejoin: round; }
+.sh-glass:hover .feat-dark .ico-box { transform: scale(1.08) rotate(4deg); }
 .sh-bento .feat-dark h3 { font-weight: 800; font-size: 1.3rem; margin-bottom: 6px; }
 .sh-bento .feat-dark p { color: #bcb6d0; font-size: 14.5px; max-width: 460px; }
-.sh-bento .feat-dark .btn-white { padding: 13px 24px; background: #fff; color: var(--sh-text); border-radius: 999px; font-weight: 700; font-size: 14px; white-space: nowrap; text-decoration: none; }
+.sh-bento .feat-dark .btn-white {
+  padding: 13px 24px; background: #fff; color: var(--sh-text); border-radius: 999px;
+  font-weight: 700; font-size: 14px; white-space: nowrap; text-decoration: none;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+.sh-bento .feat-dark .btn-white:hover { transform: translateY(-2px); box-shadow: 0 12px 28px rgba(0,0,0,.25); }
+
+@media (prefers-reduced-motion: reduce) {
+  .sh-glass, .sh-bento .feat-icon-big, .sh-bento .feat-small .ico, .sh-bento .feat-dark .ico-box, .sh-bento .more svg, .sh-bento .btn-white {
+    transition: none;
+  }
+}
 
 @media (max-width: 800px) {
   .sh-bento .feat-wide { grid-column: span 6; grid-template-columns: 1fr; }
   .sh-bento .feat-small { grid-column: span 3; }
+  .sh-bento .feat-icon-big { aspect-ratio: auto; height: 120px; order: -1; margin-bottom: 6px; }
+  .sh-bento .feat-icon-big svg { width: 40px; height: 40px; }
 }
 @media (max-width: 560px) {
   .sh-bento .feat-small { grid-column: span 6; }
