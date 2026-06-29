@@ -348,7 +348,7 @@
   background: radial-gradient(circle at 12% 88%, rgba(92,198,245,.18), transparent 55%);
   pointer-events: none;
 }
-.sh-about { position: relative; z-index: 1; display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 50px; align-items: center; }
+.sh-about { position: relative; z-index: 1; display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 50px; align-items: stretch; }
 .sh-about .label { font-size: 13px; color: var(--sh-blue); font-weight: 700; letter-spacing: .04em; text-transform: uppercase; margin-bottom: 14px; }
 .sh-about h2 { font-weight: 800; font-size: clamp(1.7rem, 3.4vw, 2.3rem); letter-spacing: -0.03em; line-height: 1.1; margin-bottom: 20px; }
 .sh-about p { color: var(--sh-text-muted); font-size: 16px; line-height: 1.7; margin-bottom: 16px; }
@@ -362,12 +362,14 @@
 .sh-about .stats strong { display: block; font-weight: 800; font-size: 1.6rem; letter-spacing: -0.02em; color: var(--sh-text); }
 .sh-about .stats span { font-size: 12.5px; color: var(--sh-text-soft); font-weight: 500; }
 .sh-about .photo {
-  aspect-ratio: 1; border-radius: 22px;
+  border-radius: 22px;
   overflow: hidden;
   border: 1px solid rgba(255,255,255,.8);
   box-shadow: 0 24px 60px rgba(59,130,246,.22);
+  min-height: 320px;
+  height: 100%;
 }
-.sh-about .photo img { width: 100%; height: 100%; object-fit: cover; }
+.sh-about .photo img { width: 100%; height: 100%; object-fit: cover; display: block; }
 .sh-about .photo.placeholder {
   background: repeating-linear-gradient(45deg, #f3f1fa, #f3f1fa 14px, #eeeaf7 14px, #eeeaf7 28px);
   display: flex; align-items: center; justify-content: center;
@@ -377,7 +379,7 @@
 @media (max-width: 800px) {
   .sh-about-card { padding: 28px; }
   .sh-about { grid-template-columns: 1fr; }
-  .sh-about .photo { order: -1; max-width: 360px; margin: 0 auto; }
+  .sh-about .photo { order: -1; width: 100%; max-width: none; height: 220px; min-height: 0; margin: 0; }
 }
 
 /* Process v2: split layout, text + numbered card stack */
