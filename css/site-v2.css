@@ -8,7 +8,8 @@
   --sh-text-muted: #5a6072;
   --sh-text-soft: #6e6e73;
   --sh-border: #ece9f3;
-  --sh-grad: linear-gradient(135deg, var(--sh-blue-light), var(--sh-blue));
+  --sh-blue-bright: #3866b3;
+  --sh-grad: linear-gradient(135deg, #3866b3 0%, #1c3461 100%);
   --sh-font: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
 }
 .sh-page * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -139,7 +140,7 @@
   max-width: 580px; margin: 0 auto 36px;
 }
 .sh-hero .actions { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; margin-bottom: 64px; }
-.sh-btn-primary {
+.sh-page .sh-btn-primary {
   display: inline-flex; align-items: center; gap: 8px;
   padding: 16px 30px;
   background: var(--sh-grad);
@@ -148,6 +149,7 @@
   text-decoration: none; border: none; cursor: pointer;
   box-shadow: 0 10px 26px rgba(28,52,97,.35);
 }
+.sh-page .sh-btn-primary svg { stroke: #fff; }
 .sh-btn-secondary {
   display: inline-flex; align-items: center; gap: 8px;
   padding: 16px 28px;
