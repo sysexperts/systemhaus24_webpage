@@ -1,9 +1,9 @@
 /* systemhaus24.net — Design System v2 (Clean/Hell, Glassmorphism) */
 
 :root {
-  --sh-blue: #3b82f6;
-  --sh-blue-light: #5cc6f5;
-  --sh-navy: #1a1333;
+  --sh-blue: #1c3461;
+  --sh-blue-light: #2a4a8a;
+  --sh-navy: #14274d;
   --sh-text: #1d1d1f;
   --sh-text-muted: #5a6072;
   --sh-text-soft: #6e6e73;
@@ -65,7 +65,7 @@
   font-size: 14px; font-weight: 600;
 }
 .sh-nav-dropdown .menu a span.sub { font-size: 12px; color: var(--sh-text-soft); font-weight: 400; }
-.sh-nav-dropdown .menu a:hover { background: rgba(59,130,246,.08); }
+.sh-nav-dropdown .menu a:hover { background: rgba(28,52,97,.08); }
 .sh-nav-dropdown .menu .soon { padding: 10px 14px; font-size: 12.5px; color: #b3acc7; font-style: italic; }
 
 @media (max-width: 760px) {
@@ -105,9 +105,9 @@
   content: "";
   position: absolute; inset: 0; z-index: -1;
   background:
-    radial-gradient(circle at 10% 15%, rgba(125,211,252,.45), transparent 55%),
-    radial-gradient(circle at 90% 45%, rgba(96,165,250,.35), transparent 55%),
-    radial-gradient(circle at 40% 95%, rgba(59,130,246,.25), transparent 55%);
+    radial-gradient(circle at 10% 15%, rgba(42,74,138,.24), transparent 55%),
+    radial-gradient(circle at 90% 45%, rgba(42,74,138,.18), transparent 55%),
+    radial-gradient(circle at 40% 95%, rgba(28,52,97,.14), transparent 55%);
   filter: blur(40px);
 }
 .sh-hero .pill {
@@ -116,9 +116,9 @@
   background: rgba(255,255,255,.65);
   backdrop-filter: blur(14px);
   border: 1px solid rgba(255,255,255,.8);
-  box-shadow: 0 6px 22px rgba(59,130,246,.15);
+  box-shadow: 0 6px 22px rgba(28,52,97,.15);
   border-radius: 999px;
-  font-size: 13px; color: #2f7fe0; font-weight: 700;
+  font-size: 13px; color: #2a4a8a; font-weight: 700;
   margin-bottom: 30px;
 }
 .sh-hero h1 {
@@ -146,7 +146,7 @@
   color: #fff; border-radius: 999px;
   font-weight: 700; font-size: 15px;
   text-decoration: none; border: none; cursor: pointer;
-  box-shadow: 0 10px 26px rgba(59,130,246,.35);
+  box-shadow: 0 10px 26px rgba(28,52,97,.35);
 }
 .sh-btn-secondary {
   display: inline-flex; align-items: center; gap: 8px;
@@ -166,7 +166,7 @@
   background: rgba(255,255,255,.5);
   backdrop-filter: blur(30px) saturate(170%);
   border: 1px solid rgba(255,255,255,.7);
-  box-shadow: 0 30px 80px rgba(59,130,246,.2);
+  box-shadow: 0 30px 80px rgba(28,52,97,.2);
   display: flex; align-items: center; justify-content: center;
   color: #8a93a8; font-size: 14px; font-weight: 600;
   overflow: hidden;
@@ -238,15 +238,15 @@
   content: "";
   position: absolute; inset: 0;
   border-radius: inherit;
-  background: linear-gradient(135deg, rgba(92,198,245,.16), rgba(59,130,246,.10));
+  background: linear-gradient(135deg, rgba(42,74,138,.16), rgba(28,52,97,.10));
   opacity: 0;
   transition: opacity 0.35s ease;
   pointer-events: none;
 }
 .sh-glass:hover {
   transform: translateY(-6px);
-  box-shadow: 0 26px 64px rgba(59,130,246,.22);
-  border-color: rgba(92,198,245,.6);
+  box-shadow: 0 26px 64px rgba(28,52,97,.22);
+  border-color: rgba(42,74,138,.6);
 }
 .sh-glass:hover::before { opacity: 1; }
 .sh-glass > * { position: relative; z-index: 1; }
@@ -275,7 +275,7 @@
 .sh-bento .feat-small .ico {
   width: 56px; height: 56px; margin: 0 auto 16px;
   border-radius: 16px;
-  background: linear-gradient(150deg, rgba(92,198,245,.2), rgba(59,130,246,.14));
+  background: linear-gradient(150deg, rgba(42,74,138,.2), rgba(28,52,97,.14));
   display: flex; align-items: center; justify-content: center;
   transition: transform 0.35s cubic-bezier(.2,.8,.2,1);
 }
@@ -289,20 +289,20 @@
 
 .sh-bento .feat-dark {
   grid-column: span 6;
-  background: linear-gradient(120deg, var(--sh-navy) 35%, #1d2f6b 100%);
+  background: linear-gradient(120deg, var(--sh-navy) 35%, #2a4a8a 100%);
   border: 1px solid rgba(255,255,255,.12);
   color: #fff;
   display: flex; align-items: center; justify-content: space-between; gap: 24px; flex-wrap: wrap;
 }
 .sh-bento .feat-dark::before {
-  background: radial-gradient(circle at 88% 20%, rgba(92,198,245,.4), transparent 55%);
+  background: radial-gradient(circle at 88% 20%, rgba(42,74,138,.4), transparent 55%);
   opacity: 1;
 }
 .sh-glass.feat-dark:hover::before { opacity: 1; }
 .sh-bento .feat-dark .left { display: flex; align-items: center; gap: 22px; }
 .sh-bento .feat-dark .ico-box {
   width: 64px; height: 64px; border-radius: 18px;
-  background: linear-gradient(150deg, rgba(92,198,245,.4), rgba(59,130,246,.3));
+  background: linear-gradient(150deg, rgba(42,74,138,.4), rgba(28,52,97,.3));
   display: flex; align-items: center; justify-content: center;
   flex-shrink: 0;
   transition: transform 0.35s cubic-bezier(.2,.8,.2,1);
@@ -349,7 +349,7 @@
 .sh-about-card::before {
   content: "";
   position: absolute; inset: 0; z-index: 0;
-  background: radial-gradient(circle at 12% 88%, rgba(92,198,245,.18), transparent 55%);
+  background: radial-gradient(circle at 12% 88%, rgba(42,74,138,.18), transparent 55%);
   pointer-events: none;
 }
 .sh-about { position: relative; z-index: 1; display: grid; grid-template-columns: 0.78fr 1.22fr; gap: 50px; align-items: center; }
@@ -358,8 +358,8 @@
 .sh-about p { color: var(--sh-text-muted); font-size: 16px; line-height: 1.7; margin-bottom: 16px; }
 .sh-about .stats { display: flex; gap: 14px; margin-top: 26px; flex-wrap: wrap; }
 .sh-about .stats > div {
-  background: linear-gradient(150deg, rgba(92,198,245,.16), rgba(59,130,246,.1));
-  border: 1px solid rgba(59,130,246,.14);
+  background: linear-gradient(150deg, rgba(42,74,138,.16), rgba(28,52,97,.1));
+  border: 1px solid rgba(28,52,97,.14);
   border-radius: 14px;
   padding: 12px 18px;
 }
@@ -369,7 +369,7 @@
   border-radius: 22px;
   overflow: hidden;
   border: 1px solid rgba(255,255,255,.8);
-  box-shadow: 0 24px 60px rgba(59,130,246,.22);
+  box-shadow: 0 24px 60px rgba(28,52,97,.22);
   aspect-ratio: 4 / 3.4;
 }
 .sh-about .photo img { width: 100%; height: 100%; object-fit: cover; display: block; }
@@ -398,7 +398,7 @@
 .sh-process-split .pill {
   display: inline-flex; align-items: center;
   background: var(--sh-blue-light, #e6f2fd);
-  background: rgba(59,130,246,.1);
+  background: rgba(28,52,97,.1);
   color: var(--sh-blue);
   font-size: 12.5px; font-weight: 700; letter-spacing: .04em; text-transform: uppercase;
   padding: 8px 16px; border-radius: 999px;
@@ -409,7 +409,7 @@
 .sh-process-split .sh-btn-primary { display: inline-flex; }
 
 .sh-process-cards {
-  background: linear-gradient(160deg, rgba(92,198,245,.12), rgba(59,130,246,.06));
+  background: linear-gradient(160deg, rgba(42,74,138,.12), rgba(28,52,97,.06));
   border-radius: 28px;
   padding: 22px;
   display: flex; flex-direction: column; gap: 14px;
@@ -417,10 +417,10 @@
 .sh-process-cards .pcard {
   background: #fff; border-radius: 18px; padding: 18px 20px;
   display: flex; align-items: flex-start; gap: 16px;
-  box-shadow: 0 8px 24px rgba(59,130,246,.08);
+  box-shadow: 0 8px 24px rgba(28,52,97,.08);
   transition: transform 0.3s cubic-bezier(.2,.8,.2,1), box-shadow 0.3s ease;
 }
-.sh-process-cards .pcard:hover { transform: translateX(6px); box-shadow: 0 14px 36px rgba(59,130,246,.16); }
+.sh-process-cards .pcard:hover { transform: translateX(6px); box-shadow: 0 14px 36px rgba(28,52,97,.16); }
 .sh-process-cards .pcard .num {
   flex-shrink: 0;
   width: 34px; height: 34px; border-radius: 10px;
@@ -465,7 +465,7 @@
   content: "";
   position: absolute; bottom: -120px; left: 50%; transform: translateX(-50%);
   width: 500px; height: 300px;
-  background: radial-gradient(ellipse, rgba(47,147,245,.45), transparent 70%);
+  background: radial-gradient(ellipse, rgba(42,74,138,.45), transparent 70%);
   filter: blur(10px);
 }
 .sh-contact > * { position: relative; }
